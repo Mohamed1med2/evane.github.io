@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A little something for you ♡</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--pink:#f6c7d4;--deep:#9b4964;--paper:#fff8f2;--ink:#5d3846;--cream:#fdf1e6}
+  body{font-family:Georgia,'Times New Roman',serif;background:linear-gradient(145deg,#f8dce4,#fbeee7 55%,#f4d3dc);color:var(--ink);overflow:hidden;min-height:100vh}
+  button{font:inherit;cursor:pointer}
+  .screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .75s ease,transform .75s cubic-bezier(.2,.8,.2,1);padding:24px}
+  .hidden{opacity:0;pointer-events:none;transform:scale(1.04)}
+  .card{width:min(430px,92vw);min-height:520px;border-radius:30px;background:rgba(255,248,242,.88);box-shadow:0 25px 70px rgba(96,52,68,.18);border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(14px);padding:34px 28px;text-align:center;position:relative;overflow:hidden}
+  .spark{position:absolute;width:8px;height:8px;background:#fff;border-radius:50%;opacity:.85;animation:float 4s ease-in-out infinite}
+  .s1{left:12%;top:18%}.s2{right:16%;top:28%;animation-delay:.8s}.s3{left:20%;bottom:18%;animation-delay:1.6s}.s4{right:10%;bottom:14%;animation-delay:2.3s}
+  @keyframes float{50%{transform:translateY(-14px) scale(1.25);opacity:.35}}
+  .tiny{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#aa7084;margin-bottom:20px}
+  h1{font-size:42px;line-height:1.05;font-weight:500;margin-top:36px}
+  .heart{font-size:64px;margin:28px auto 18px;animation:beat 1.7s ease-in-out infinite;filter:drop-shadow(0 8px 8px rgba(155,73,100,.18))}
+  @keyframes beat{0%,100%{transform:scale(1)}45%{transform:scale(1.12)}55%{transform:scale(1.04)}}
+  .sub{font-size:17px;line-height:1.7;color:#815b69;max-width:320px;margin:0 auto}
+  .main-btn{border:0;background:var(--deep);color:white;padding:14px 28px;border-radius:999px;margin-top:32px;box-shadow:0 12px 25px rgba(155,73,100,.22);transition:.25s}
+  .main-btn:hover{transform:translateY(-3px);box-shadow:0 16px 28px rgba(155,73,100,.28)}
+  .gift-title{margin:18px 0 8px;font-size:32px;font-weight:500}
+  .gift-sub{color:#9a7080;margin-bottom:28px}
+  .gifts{display:flex;justify-content:center;gap:16px;margin-top:34px}
+  .gift{width:96px;height:108px;border:0;background:transparent;position:relative;transition:transform .25s;animation:bob 2.8s ease-in-out infinite}
+  .gift:nth-child(2){animation-delay:.35s}.gift:nth-child(3){animation-delay:.7s}
+  .gift:hover{transform:translateY(-9px) rotate(-2deg)}
+  @keyframes bob{50%{transform:translateY(-7px)}}
+  .box{position:absolute;bottom:0;left:8px;width:80px;height:68px;border-radius:8px;background:#e9a7bb;box-shadow:0 8px 18px rgba(96,52,68,.15)}
+  .lid{position:absolute;bottom:61px;left:3px;width:90px;height:20px;background:#d989a4;border-radius:6px}
+  .ribbon-v{position:absolute;left:43px;bottom:0;width:12px;height:81px;background:#fff0f4}.ribbon-h{position:absolute;left:8px;bottom:29px;width:80px;height:12px;background:#fff0f4}
+  .bow{position:absolute;left:29px;bottom:77px;font-size:38px;color:#fff0f4;line-height:1;transform:rotate(-8deg)}
+  .envelope-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#f8dce4,#fbeee7);opacity:0;pointer-events:none;transition:opacity .45s;z-index:20}
+  .envelope-wrap.show{opacity:1;pointer-events:auto}
+  .envelope{position:relative;width:260px;height:170px;background:#e8a7b9;border-radius:8px;box-shadow:0 24px 45px rgba(96,52,68,.2);transform:scale(.35) rotate(-8deg);animation:zoomIn .75s cubic-bezier(.2,.9,.2,1) forwards}
+  @keyframes zoomIn{to{transform:scale(1) rotate(0)}}
+  .envelope:before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 49%,#d88aa2 50%) left/50% 100% no-repeat,linear-gradient(225deg,transparent 49%,#d88aa2 50%) right/50% 100% no-repeat;border-radius:8px}
+  .flap{position:absolute;top:0;left:0;width:0;height:0;border-left:130px solid transparent;border-right:130px solid transparent;border-top:92px solid #efbbca;transform-origin:top;z-index:3;animation:openFlap .7s .65s ease forwards}
+  @keyframes openFlap{to{transform:rotateX(180deg);z-index:0}}
+  .letter{position:absolute;width:220px;height:205px;background:#fffaf5;left:20px;bottom:15px;border-radius:9px;padding:28px 22px;text-align:center;box-shadow:0 10px 20px rgba(96,52,68,.08);z-index:2;transform:translateY(70px);opacity:0;animation:letterUp .9s 1.2s cubic-bezier(.2,.9,.2,1) forwards}
+  @keyframes letterUp{to{transform:translateY(-105px);opacity:1}}
+  .letter h2{font-weight:500;font-size:27px;margin-bottom:14px}.letter p{font-size:15px;line-height:1.55;color:#805f6b}
+  .close{position:absolute;right:22px;top:22px;border:0;background:rgba(255,255,255,.7);width:38px;height:38px;border-radius:50%;font-size:22px;color:#8a5668;z-index:30}
+  .footer{position:absolute;bottom:18px;left:0;right:0;font-size:12px;color:#aa8190}
+  @media(max-width:480px){.card{min-height:500px;padding:30px 20px}h1{font-size:36px}.gifts{gap:5px}.gift{transform:scale(.9)}}
+</style>
+</head>
+<body>
+<section class="screen" id="intro">
+  <div class="card">
+    <i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i>
+    <div class="tiny">just for you</div>
+    <div class="heart">♡</div>
+    <h1>I made you<br>something small.</h1>
+    <p class="sub" style="margin-top:20px">Not for a birthday. Not for a special date. Just because some people deserve a little reminder.</p>
+    <button class="main-btn" onclick="goGifts()">open it ♡</button>
+    <div class="footer">a tiny digital gift</div>
+  </div>
+</section>
+
+<section class="screen hidden" id="giftScreen">
+  <div class="card">
+    <div class="tiny">one step at a time</div>
+    <div class="gift-title">Choose your gift</div>
+    <p class="gift-sub">Pick one. I promise they don't bite.</p>
+    <div class="gifts">
+      <button class="gift" onclick="openLetter()"><span class="box"></span><span class="lid"></span><span class="ribbon-v"></span><span class="ribbon-h"></span><span class="bow">⌁</span></button>
+      <button class="gift" onclick="openLetter()"><span class="box" style="background:#cda9d9"></span><span class="lid" style="background:#b88ec7"></span><span class="ribbon-v"></span><span class="ribbon-h"></span><span class="bow">⌁</span></button>
+      <button class="gift" onclick="openLetter()"><span class="box" style="background:#e5bd96"></span><span class="lid" style="background:#d4a77f"></span><span class="ribbon-v"></span><span class="ribbon-h"></span><span class="bow">⌁</span></button>
+    </div>
+    <p class="sub" style="margin-top:36px">This is only a prototype. We'll replace every word, gift and animation with our final story.</p>
+    <div class="footer">tap any gift</div>
+  </div>
+</section>
+
+<div class="envelope-wrap" id="letterScene">
+  <button class="close" onclick="closeLetter()">×</button>
+  <div class="envelope">
+    <div class="flap"></div>
+    <div class="letter">
+      <h2>Hey, you ♡</h2>
+      <p>This little page is just a test. The real one will tell the story exactly the way we want it to.</p>
+    </div>
+  </div>
+</div>
+<script>
+function goGifts(){document.getElementById('intro').classList.add('hidden');setTimeout(()=>document.getElementById('giftScreen').classList.remove('hidden'),320)}
+function openLetter(){const s=document.getElementById('letterScene');s.classList.remove('show');void s.offsetWidth;s.classList.add('show')}
+function closeLetter(){document.getElementById('letterScene').classList.remove('show')}
+</script>
+</body>
+</html>
