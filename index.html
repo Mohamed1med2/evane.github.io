@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f6aec9" />
   <title>For You ♡</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
   <main class="app">
     <section class="stage active" id="screen-1" aria-label="Password page">
-      <img src="assets/screens/design-sheet-hd.avif" alt="Guess the password" class="bg art art-1" />
+      <img src="assets/screens/design-sheet-hd.avif?v=4" alt="Guess the password" class="bg art art-1" />
       <div class="passcode-display" aria-hidden="true">
         <span class="code-box" id="digit-0"></span>
         <span class="code-box" id="digit-1"></span>
@@ -29,45 +30,45 @@
         <button class="key" data-key="7" aria-label="7"></button>
         <button class="key" data-key="8" aria-label="8"></button>
         <button class="key" data-key="9" aria-label="9"></button>
-        <button class="key small" data-action="clear" aria-label="clear"></button>
+        <button class="key" data-action="clear" aria-label="clear"></button>
         <button class="key" data-key="0" aria-label="0"></button>
-        <button class="key small" data-action="back" aria-label="backspace"></button>
+        <button class="key" data-action="back" aria-label="backspace"></button>
       </div>
     </section>
 
     <section class="stage" id="screen-2" aria-label="Wrong password">
-      <img src="assets/screens/design-sheet-hd.avif" alt="Wrong password message" class="bg art art-2" />
+      <img src="assets/screens/design-sheet-hd.avif?v=4" alt="Wrong password message" class="bg art art-2" />
       <button class="hotspot ok-btn" data-go="1" aria-label="OK"></button>
     </section>
 
     <section class="stage" id="screen-3" aria-label="Hello page">
-      <img src="assets/screens/design-sheet-hd.avif" alt="Hey baby" class="bg art art-3" />
+      <img src="assets/screens/design-sheet-hd.avif?v=4" alt="Hey baby" class="bg art art-3" />
       <button class="hotspot start-btn" data-go="4" aria-label="Start"></button>
     </section>
 
     <section class="stage" id="screen-4" aria-label="Love note page">
-      <img src="assets/screens/design-sheet-hd.avif" alt="Hi love note" class="bg art art-4" />
+      <img src="assets/screens/design-sheet-hd.avif?v=4" alt="Hi love note" class="bg art art-4" />
       <button class="hotspot next-btn" data-go="5" aria-label="Next"></button>
     </section>
 
     <section class="stage" id="screen-5" aria-label="Gift page">
-      <img src="assets/screens/design-sheet-hd.avif" alt="Choose your gift" class="bg art art-5" />
+      <img src="assets/screens/design-sheet-hd.avif?v=4" alt="Choose your gift" class="bg art art-5" />
       <button class="hotspot gift gift-1" data-go="6" aria-label="A letter"></button>
       <button class="hotspot gift gift-2" data-go="6" aria-label="A song"></button>
       <button class="hotspot gift gift-3" data-go="6" aria-label="A memory"></button>
     </section>
 
     <section class="stage" id="screen-6" aria-label="Envelope page">
-      <img src="assets/screens/design-sheet-hd.avif" alt="Open the letter" class="bg art art-6" />
+      <img src="assets/screens/design-sheet-hd.avif?v=4" alt="Open the letter" class="bg art art-6" />
       <button class="hotspot envelope-btn" data-go="7" aria-label="Open letter"></button>
     </section>
 
     <section class="stage" id="screen-7" aria-label="Thank you page">
-      <img src="assets/screens/design-sheet-hd.avif" alt="Thank you for being here" class="bg art art-7" />
+      <img src="assets/screens/design-sheet-hd.avif?v=4" alt="Thank you for being here" class="bg art art-7" />
       <button class="hotspot home-btn" data-go="3" aria-label="Back home"></button>
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>
