@@ -1,0 +1,187 @@
+:root {
+  --panel-width: min(100vw, 430px);
+  --shadow: 0 18px 50px rgba(41, 17, 49, 0.25);
+  --focus: rgba(255, 255, 255, 0.12);
+  --digit-color: #9d315f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #1f0d25, #2f1636 55%, #1d0d23);
+  font-family: 'Nunito', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.app {
+  position: relative;
+  width: var(--panel-width);
+  aspect-ratio: 268 / 590;
+  max-height: 100vh;
+  margin: 0 auto;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.stage.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 700%;
+  max-width: none;
+  object-fit: fill;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  image-rendering: auto;
+}
+.art-1{left:0}
+.art-2{left:-100%}
+.art-3{left:-200%}
+.art-4{left:-300%}
+.art-5{left:-400%}
+.art-6{left:-500%}
+.art-7{left:-600%}
+
+.passcode-display {
+  position: absolute;
+  top: 20.2%;
+  left: 19.8%;
+  width: 60.5%;
+  height: 8.2%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6.5%;
+  pointer-events: none;
+}
+
+.code-box {
+  display: grid;
+  place-items: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(14px, 3.4vw, 18px);
+  color: var(--digit-color);
+  text-shadow: 1px 1px 0 #ffd0dd;
+}
+
+.keypad {
+  position: absolute;
+  top: 33.7%;
+  left: 21.5%;
+  width: 57.5%;
+  height: 39.5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4.6% 8.5%;
+}
+
+.key,
+.hotspot {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 18px;
+}
+
+.key:hover,
+.hotspot:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.key:focus-visible,
+.hotspot:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.hotspot {
+  position: absolute;
+}
+
+.ok-btn {
+  left: 30.5%;
+  top: 68.9%;
+  width: 39.8%;
+  height: 6.6%;
+  border-radius: 999px;
+}
+
+.start-btn {
+  left: 13%;
+  top: 82.8%;
+  width: 74.4%;
+  height: 8.9%;
+  border-radius: 999px;
+}
+
+.next-btn {
+  right: 6.8%;
+  top: 82.3%;
+  width: 13.4%;
+  height: 8.2%;
+  border-radius: 50%;
+}
+
+.gift-1 {
+  left: 28.4%;
+  top: 25.8%;
+  width: 42.3%;
+  height: 17.8%;
+}
+
+.gift-2 {
+  left: 19.5%;
+  top: 45.2%;
+  width: 28.3%;
+  height: 17.2%;
+}
+
+.gift-3 {
+  left: 55.2%;
+  top: 45.2%;
+  width: 28.3%;
+  height: 17.2%;
+}
+
+.envelope-btn {
+  left: 14.5%;
+  top: 46%;
+  width: 70.5%;
+  height: 41%;
+}
+
+.home-btn {
+  left: 19.8%;
+  top: 83.2%;
+  width: 60.8%;
+  height: 7.1%;
+  border-radius: 999px;
+}
+
+@media (min-width: 700px) {
+  .app {
+    width: min(86vw, 470px);
+  }
+}
