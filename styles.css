@@ -1,33 +1,27 @@
 :root {
-  --panel-width: min(100vw, 430px);
-  --shadow: 0 18px 50px rgba(41, 17, 49, 0.25);
-  --focus: rgba(255, 255, 255, 0.12);
   --digit-color: #9d315f;
+  --focus: rgba(255, 255, 255, 0.75);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  min-height: 100%;
-}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
 
 body {
+  min-height: 100dvh;
   display: grid;
   place-items: center;
+  overflow: hidden;
   background: linear-gradient(180deg, #1f0d25, #2f1636 55%, #1d0d23);
   font-family: 'Nunito', system-ui, sans-serif;
-  overflow-x: hidden;
 }
 
 .app {
   position: relative;
-  width: var(--panel-width);
+  width: min(100vw, 430px, calc(100dvh * 0.45424));
   aspect-ratio: 268 / 590;
-  max-height: 100vh;
+  overflow: hidden;
   margin: 0 auto;
+  background: #f6b7cf;
 }
 
 .stage {
@@ -35,7 +29,8 @@ body {
   inset: 0;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 220ms ease;
+  transition: opacity 180ms ease;
+  overflow: hidden;
 }
 
 .stage.active {
@@ -54,134 +49,140 @@ body {
   user-select: none;
   -webkit-user-drag: none;
   image-rendering: auto;
+  transform: translateZ(0);
 }
-.art-1{left:0}
-.art-2{left:-100%}
-.art-3{left:-200%}
-.art-4{left:-300%}
-.art-5{left:-400%}
-.art-6{left:-500%}
-.art-7{left:-600%}
+
+.art-1 { left: 0; }
+.art-2 { left: -100%; }
+.art-3 { left: -200%; }
+.art-4 { left: -300%; }
+.art-5 { left: -400%; }
+.art-6 { left: -500%; }
+.art-7 { left: -600%; }
 
 .passcode-display {
   position: absolute;
-  top: 20.2%;
+  top: 20.25%;
   left: 19.8%;
   width: 60.5%;
-  height: 8.2%;
+  height: 8.1%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 6.5%;
+  gap: 6.4%;
   pointer-events: none;
 }
 
 .code-box {
   display: grid;
   place-items: center;
+  margin: 16% 10%;
+  border-radius: 7px;
+  background: rgba(255, 230, 238, 0.98);
   font-family: 'Press Start 2P', monospace;
-  font-size: clamp(14px, 3.4vw, 18px);
+  font-size: clamp(12px, 3.4vw, 18px);
   color: var(--digit-color);
-  text-shadow: 1px 1px 0 #ffd0dd;
+  text-shadow: 1px 1px 0 #fff5f8;
 }
 
 .keypad {
   position: absolute;
-  top: 33.7%;
-  left: 21.5%;
-  width: 57.5%;
-  height: 39.5%;
+  top: 33.6%;
+  left: 21.4%;
+  width: 57.6%;
+  height: 39.6%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4.6% 8.5%;
+  gap: 4.5% 8.4%;
 }
 
 .key,
 .hotspot {
   appearance: none;
+  -webkit-appearance: none;
   border: 0;
   padding: 0;
+  margin: 0;
   background: transparent;
   cursor: pointer;
-  border-radius: 18px;
+  touch-action: manipulation;
 }
 
-.key:hover,
-.hotspot:hover {
-  background: rgba(255, 255, 255, 0.02);
+.key { border-radius: 999px; }
+.hotspot { position: absolute; }
+
+.key:active,
+.hotspot:active {
+  background: rgba(255,255,255,.10);
 }
 
 .key:focus-visible,
 .hotspot:focus-visible {
-  outline: 3px solid var(--focus);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
-}
-
-.hotspot {
-  position: absolute;
 }
 
 .ok-btn {
   left: 30.5%;
-  top: 68.9%;
+  top: 68.8%;
   width: 39.8%;
-  height: 6.6%;
+  height: 6.8%;
   border-radius: 999px;
 }
 
 .start-btn {
-  left: 13%;
-  top: 82.8%;
-  width: 74.4%;
-  height: 8.9%;
+  left: 12.8%;
+  top: 82.5%;
+  width: 74.6%;
+  height: 9.1%;
   border-radius: 999px;
 }
 
 .next-btn {
-  right: 6.8%;
-  top: 82.3%;
-  width: 13.4%;
-  height: 8.2%;
+  right: 6.5%;
+  top: 82.1%;
+  width: 14.2%;
+  height: 8.7%;
   border-radius: 50%;
 }
 
 .gift-1 {
-  left: 28.4%;
-  top: 25.8%;
-  width: 42.3%;
-  height: 17.8%;
+  left: 28.2%;
+  top: 25.1%;
+  width: 43.3%;
+  height: 18.5%;
 }
 
 .gift-2 {
-  left: 19.5%;
-  top: 45.2%;
-  width: 28.3%;
-  height: 17.2%;
+  left: 18.8%;
+  top: 45%;
+  width: 29.3%;
+  height: 17.7%;
 }
 
 .gift-3 {
-  left: 55.2%;
-  top: 45.2%;
-  width: 28.3%;
-  height: 17.2%;
+  left: 54.8%;
+  top: 45%;
+  width: 29.3%;
+  height: 17.7%;
 }
 
 .envelope-btn {
-  left: 14.5%;
-  top: 46%;
-  width: 70.5%;
-  height: 41%;
+  left: 13.5%;
+  top: 45.2%;
+  width: 73%;
+  height: 42.3%;
 }
 
 .home-btn {
-  left: 19.8%;
-  top: 83.2%;
-  width: 60.8%;
-  height: 7.1%;
+  left: 19.3%;
+  top: 83%;
+  width: 61.5%;
+  height: 7.5%;
   border-radius: 999px;
 }
 
 @media (min-width: 700px) {
   .app {
-    width: min(86vw, 470px);
+    width: min(470px, calc(100dvh * 0.45424));
   }
 }
