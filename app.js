@@ -1,96 +1,79 @@
-const PASSWORD = '0801';
-let entered = '';
+const PASSWORD='0801';
+let entered='';
 
-const stages = Array.from(document.querySelectorAll('.stage'));
-const digitEls = Array.from(document.querySelectorAll('.code-box'));
-const keyButtons = Array.from(document.querySelectorAll('.keypad .key'));
-const navButtons = Array.from(document.querySelectorAll('[data-go]'));
+const stages=[...document.querySelectorAll('.stage')];
+const digitEls=[...document.querySelectorAll('.code-box')];
+const keyButtons=[...document.querySelectorAll('.keypad .key')];
+const navButtons=[...document.querySelectorAll('[data-go]')];
 
-function showScreen(n) {
-  stages.forEach(stage => {
-    stage.classList.toggle('active', stage.id === `screen-${n}`);
-  });
+function showScreen(number){
+  stages.forEach(stage=>stage.classList.toggle('active',stage.id===`screen-${number}`));
 }
 
-function renderDigits() {
-  digitEls.forEach((el, i) => {
-    el.textContent = entered[i] ?? '';
-  });
+function renderDigits(){
+  digitEls.forEach((el,index)=>{el.textContent=entered[index]??'';});
 }
 
-function clearDigits() {
-  entered = '';
+function clearDigits(){
+  entered='';
   renderDigits();
 }
 
-function submitIfReady() {
-  if (entered.length < 4) return;
-  if (entered === PASSWORD) {
+function validatePassword(){
+  if(entered.length!==4)return;
+  if(entered===PASSWORD){
     clearDigits();
     showScreen(3);
-  } else {
+  }else{
     showScreen(2);
   }
 }
 
-keyButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const key = btn.dataset.key;
-    const action = btn.dataset.action;
+keyButtons.forEach(button=>{
+  button.addEventListener('click',()=>{
+    const action=button.dataset.action;
+    const key=button.dataset.key;
 
-    if (action === 'clear') {
+    if(action==='clear'){
       clearDigits();
       return;
     }
-
-    if (action === 'back') {
-      entered = entered.slice(0, -1);
+    if(action==='back'){
+      entered=entered.slice(0,-1);
       renderDigits();
       return;
     }
+    if(!key||entered.length>=4)return;
 
-    if (!key || entered.length >= 4) return;
-
-    entered += key;
+    entered+=key;
     renderDigits();
-    submitIfReady();
+    validatePassword();
   });
 });
 
-navButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const target = Number(btn.dataset.go);
-    if (btn.classList.contains('ok-btn')) {
-      clearDigits();
+navButtons.forEach(button=>{
+  button.addEventListener('click',()=>{
+    if(button.classList.contains('ok-btn'))clearDigits();
+    showScreen(Number(button.dataset.go));
+  });
+});
+
+window.addEventListener('keydown',event=>{
+  if(/^\d$/.test(event.key)){
+    if(entered.length<4){
+      entered+=event.key;
+      renderDigits();
+      validatePassword();
     }
-    showScreen(target);
-  });
-});
-
-window.addEventListener('keydown', (e) => {
-  if (!/^\d$/.test(e.key) && !['Backspace', 'Delete', 'Enter', 'Escape'].includes(e.key)) return;
-
-  if (e.key === 'Backspace' || e.key === 'Delete') {
-    entered = entered.slice(0, -1);
-    renderDigits();
     return;
   }
-
-  if (e.key === 'Escape') {
+  if(event.key==='Backspace'||event.key==='Delete'){
+    entered=entered.slice(0,-1);
+    renderDigits();
+  }
+  if(event.key==='Escape'){
     clearDigits();
     showScreen(1);
-    return;
-  }
-
-  if (e.key === 'Enter') {
-    submitIfReady();
-    return;
-  }
-
-  if (entered.length < 4) {
-    entered += e.key;
-    renderDigits();
-    submitIfReady();
   }
 });
 
