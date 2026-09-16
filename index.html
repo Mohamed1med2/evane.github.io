@@ -1,28 +1,231 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#553568"><title>A little love, for you ♡</title><link rel="stylesheet" href="styles.css?v=3"><script defer src="app.js?v=3"></script></head>
-<body><main id="app">
-<section class="page active" id="password" aria-label="Guess the password">
-<div class="desktop-entry"><img src="assets/art/desktop-entry.webp" alt="Private little place. Guess the password. Only one person should know this code. A tiny gift made just for you." class="desktop-art"><div class="desktop-slots slots" aria-hidden="true"></div><div class="desktop-keys keypad"></div></div>
-<div class="mobile-entry mobile-laptop" aria-label="Private little place and password keypad">
-  <div class="mobile-copy"><div class="mobile-eyebrow">PRIVATE LITTLE PLACE ♡</div><h1>Guess<br>the <span>♡</span><br>password</h1><p>Only one person should know this code.<br>A tiny gift made just for you.</p></div>
-  <div class="mobile-keypad-card">
-    <div class="mobile-card-title">ENTER THE CODE</div>
-    <div class="mobile-slots slots" aria-label="Entered code" aria-live="polite"></div>
-    <div class="mobile-keys keypad" aria-label="Password keypad"></div>
-    <div class="mobile-hint">hint: four numbers ♡</div>
-  </div>
-  <div class="character couple" role="img" aria-label="A cute couple hugging"></div>
-  <div class="mobile-speech">hey, baby!<br><small>try the secret code ♡</small></div>
-  <footer>just you and me ♡</footer>
-</div>
-</section>
-<section class="page scene" id="hello" aria-labelledby="hello-title"><span class="floating-heart">♡</span><h1 class="hello-title" id="hello-title">hey,<br>baby!</h1><p class="welcome">welcome to my<br>little surprise ♡</p><div class="character wave" role="img" aria-label="A happy curly-haired boy waving"></div><button class="primary start" data-go="note">start <span>→</span></button><footer>made with love ♡</footer></section>
-<section class="page scene" id="note" aria-label="A little note"><button class="back" data-go="hello" aria-label="Back">‹</button><span class="counter">2/7</span><div class="speech"><p>hi love,<br>i made this little<br>website just for you ♡</p></div><div class="character shy" role="img" aria-label="A shy boy sitting with a kitten"></div><button class="next" data-go="gifts" aria-label="Choose your gifts">→</button><footer>♥ you make this world softer ♡</footer></section>
-<section class="page scene" id="gifts" aria-labelledby="gifts-title"><button class="back" data-go="note" aria-label="Back">‹</button><span class="counter">3/7</span><h1 id="gifts-title">choose<br>your gift !</h1><span class="gift-heart">♡</span><div class="gift-grid"><button class="gift pink" data-go="letter"><span class="present"><i class="bow"></i><i class="lid"></i><i class="box">♥</i></span><span>a letter</span></button><button class="gift blue" data-go="song"><span class="present"><i class="bow"></i><i class="lid"></i><i class="box">♥</i></span><span>a song</span></button><button class="gift peach" data-go="memory"><span class="present"><i class="bow"></i><i class="lid"></i><i class="box">♥</i></span><span>a memory</span></button></div><div class="character choosing" role="img" aria-label="The boy choosing a gift with his kitten"></div><span class="pick">pick<br>one !<br>♡</span><button class="finish" data-go="final">one last thing →</button><footer>♥ good things take time ♡</footer></section>
-<section class="page scene night" id="letter" aria-label="A letter for you"><button class="back" data-go="gifts" aria-label="Back to gifts">‹</button><span class="counter">4/7</span><div class="character peek" role="img" aria-label="The boy peeking over your letter"></div><button class="envelope" id="open-letter" aria-expanded="false"><span>a little message<br>just for you...</span><b>♥</b><i></i></button><article class="letter-paper" hidden><h2>hi, my love ♡</h2><p>Some people just make life brighter.<br>For me, that person is you.</p><p>I made this little place so you can always come back to a small reminder: you are loved, you are appreciated, and I’m so happy you’re here.</p><p>Always, you. ♡</p><button class="primary" data-go="gifts">more little gifts →</button></article><p class="tap">tap to open ♡</p><footer>a little love, just for you ♡</footer></section>
-<section class="page scene" id="song" aria-labelledby="song-title"><button class="back" data-go="gifts" aria-label="Back to gifts">‹</button><span class="counter">5/7</span><h1 id="song-title">a song<br>for you ♫</h1><div class="music-card"><div class="player-bar">♡ Now playing <span>— □ ×</span></div><div class="record"><span>♥</span></div><h2>A little love</h2><p>a tiny melody, just for you</p><div class="progress"><i></i></div><div class="player-controls"><button id="restart-song" aria-label="Restart melody">↺</button><button id="play-song" aria-label="Play melody" aria-pressed="false">▶</button><button id="stop-song" aria-label="Stop melody">■</button></div><p id="music-status" aria-live="polite">press play ♡</p></div><button class="primary gift-return" data-go="gifts">back to your gifts ♡</button><footer>some feelings sound like music ♡</footer></section>
-<section class="page scene" id="memory" aria-labelledby="memory-title"><button class="back" data-go="gifts" aria-label="Back to gifts">‹</button><span class="counter">6/7</span><h1 id="memory-title">a little<br>memory ♡</h1><div class="polaroid"><div class="memory-art"><div class="character couple" role="img" aria-label="A sweet hug"></div></div><p>my favorite place is with you ♡</p></div><p class="memory-copy">The little moments.<br>The big smiles.<br>All the things that feel like us.</p><button class="primary memory-next" data-go="final">one last thing →</button><footer>keeping this feeling forever ♡</footer></section>
-<section class="page scene night" id="final" aria-labelledby="final-title"><button class="back" data-go="gifts" aria-label="Back to gifts">‹</button><span class="counter">7/7</span><div class="thanks"><h2 id="final-title">thank you<br>for being here ♡</h2><p>you make everything<br>more special.</p></div><div class="character heart" role="img" aria-label="A happy boy hugging a pink heart with a kitten"></div><button class="primary home" data-go="hello">⌂ back home</button><footer>always, you ♡</footer></section>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#5a356b">
+  <title>A little love, for you ♡</title>
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="mobile-v4.css?v=1">
+  <script defer src="memory-photo.js?v=1"></script>
+  <script defer src="app.js?v=4"></script>
+</head>
+<body>
+<main id="app">
+
+  <section class="page password-page active" id="password" aria-label="Guess the password">
+    <div class="page-shell password-shell">
+      <div class="entry-copy">
+        <div class="eyebrow">PRIVATE LITTLE PLACE ♡</div>
+        <h1>Guess the<br>password</h1>
+        <p class="subcopy">Only one person should know this code.<br>A tiny gift made just for you.</p>
+        <div class="secret-note">hey, baby! <span>try the secret code ♡</span></div>
+      </div>
+
+      <div class="keypad-card" aria-label="Password keypad">
+        <div class="keypad-title">ENTER THE CODE</div>
+        <div class="slots" aria-label="Entered code" aria-live="polite"></div>
+        <div class="keypad"></div>
+        <div class="hint">hint: four numbers ♡</div>
+      </div>
+
+      <div class="character couple entry-couple" role="img" aria-label="A cute couple hugging"></div>
+    </div>
+  </section>
+
+  <section class="page scene" id="hello" aria-labelledby="hello-title">
+    <div class="page-shell scene-shell">
+      <div class="spacer-small"></div>
+      <h1 class="hello-title" id="hello-title">hey,<br>baby!</h1>
+      <p class="welcome">welcome to my<br>little surprise ♡</p>
+      <div class="character wave hero-character" role="img" aria-label="A happy curly-haired boy waving"></div>
+      <button class="primary wide" data-go="note">start <span>→</span></button>
+    </div>
+  </section>
+
+  <section class="page scene" id="note" aria-label="A little note">
+    <button class="back" data-go="hello" aria-label="Back">‹</button>
+    <span class="counter">2/7</span>
+    <div class="page-shell scene-shell">
+      <div class="top-space"></div>
+      <div class="speech-card">
+        <p>hi love,<br>i made this little<br>website just for you ♡</p>
+      </div>
+      <div class="character shy large-character" role="img" aria-label="A shy boy sitting with a kitten"></div>
+      <button class="round-next" data-go="gifts" aria-label="Choose your gifts">→</button>
+    </div>
+  </section>
+
+  <section class="page scene" id="gifts" aria-labelledby="gifts-title">
+    <button class="back" data-go="note" aria-label="Back">‹</button>
+    <span class="counter">3/7</span>
+    <div class="page-shell scene-shell gifts-shell">
+      <div class="top-space"></div>
+      <h1 id="gifts-title">choose<br>your gift !</h1>
+      <span class="outline-heart" aria-hidden="true">♡</span>
+
+      <div class="gift-grid">
+        <button class="gift pink" data-go="letter">
+          <span class="present" aria-hidden="true"><i class="bow"></i><i class="lid"></i><i class="box"></i></span>
+          <span>a letter</span>
+        </button>
+        <button class="gift blue" data-go="song">
+          <span class="present" aria-hidden="true"><i class="bow"></i><i class="lid"></i><i class="box"></i></span>
+          <span>a song</span>
+        </button>
+        <button class="gift peach" data-go="memory">
+          <span class="present" aria-hidden="true"><i class="bow"></i><i class="lid"></i><i class="box"></i></span>
+          <span>a memory</span>
+        </button>
+      </div>
+
+      <div class="character choosing choosing-character" role="img" aria-label="The boy choosing a gift with his kitten"></div>
+      <span class="pick">pick<br>one !<br>♡</span>
+      <button class="soft-link" data-go="final">one last thing →</button>
+    </div>
+  </section>
+
+  <section class="page scene night" id="letter" aria-label="A letter for you">
+    <button class="back" data-go="gifts" aria-label="Back to gifts">‹</button>
+    <span class="counter">4/7</span>
+    <div class="page-shell scene-shell letter-shell">
+      <div class="top-space"></div>
+      <div class="character peek peek-character" role="img" aria-label="The boy peeking over your letter"></div>
+
+      <button class="envelope" id="open-letter" aria-expanded="false">
+        <span>a little message<br>just for you...</span>
+        <b aria-hidden="true">♥</b>
+        <i aria-hidden="true"></i>
+      </button>
+      <p class="tap">tap to open ♡</p>
+
+      <article class="letter-paper" hidden>
+        <div class="letter-header">
+          <h2>for you, my love ♡</h2>
+          <span>swipe up &amp; down</span>
+        </div>
+        <div class="letter-scroll" tabindex="0">
+          <p>- HELLOOO KBIIIDTTIIIII</p>
+          <p>- TWA7ECHTEEEEK BEZAAAAF</p>
+
+          <p>- daba ntina atkouni na3ssaa ( atkouni ta tchokhri ) sawt dyalek mziwen ba9i lasse9 li fe wedniya o me ghay tensach liya 7it lsa9 liya fe 3a9li ki las9a</p>
+          <p>- Kin 7es bek b7al chi drugs<br>Las9a liya fe dmaghi lasse9 liya sawtek , wejhek , personality dyalek , da7ketek , far7a dyalek , fchouch dyalek ( ntina akbar mficha 3reftha )</p>
+
+          <p>- kiy 3jebni kifsch nti fe 3omrek 18ans walakin fe 39al dyal 12ans</p>
+
+          <p>- anb9a 7yati kamla kin bghik a 7obi o gha tkouni nti hiya nore dyal 3ayniya o zin dyal 3ayniya</p>
+          <p>- nti hiya 7obi forever o anb9a nebghik o nti dyali o ana dyaalek ❤️🙂‍↔️</p>
+          <p>- 3amerni me ghay tensach liya nsa douk 2 dyal pdf li sefeti li o li dima ayb9aw 3andi 7it hadok kiy 3niw liya 7aja kbirs</p>
+          <p>- fe 7yati ktacheft beli kayna safe zone fe ga3 blaysse o l9itek nti my best safe zone li kin stara7 fiha</p>
+
+          <p>- fe tsawer li 3andi kin b9a nchouf fe 3aynik o kin goul kifsch ta l9ite had 3aynin mziwnin li tay choufouni</p>
+          <p>- kin b9a nchouf fe wejhek o fommek o ana far7an</p>
+          <p>- ana baghi n3ich 7yati kamla m3ak nti safi o mosta9bali ykoun m3ak</p>
+          <p>- baghi gha imta yji nhare li ana wyak nkouno fe dare we7da m3a wladna o nkoino far7anin o 3amerna men hezo lhem chi7aja o nkouno ana wyak 3a2ila li me 3andhach machakil inchaalah</p>
+          <p>- bghit ana wyak o m3ak nti nemchiw l7eje kima mama o baba mchaw m3a ba3diyathom o nkemlo ana wyak had rokn</p>
+          <p>- KIN BGHIK BEZAF A 7BIBA A TEB9AY NTI HIYA ROU7I O 9ALBIII DA2IMAN</p>
+          <p>- KIN BGHIK A JANNAT ❤️</p>
+          <p>- HAD WEBSITE DYALEK NTI T9ADRI DOKHLI LIH FE AYA W9IYTA AYEB9A DYALEK O AYB9A KHEDAM DIMA ❤️</p>
+          <p>- LYOUMA FAKERT O ZEDT FIH TIMER MEN NHARE RELATIONSHIP DYALNA BDAT O TIMER KAYN TA7TE A 7OBI ❤️</p>
+          <p>- I LOVE YOU SOOO SOOO MUUCH A 7OBIII A ROU7III A 7YAAATII</p>
+
+          <p>- lyouma 9arebt nsali had site 3reftiii far7aaaaan bezaaaaf baghi gha imta nsefto liiiik</p>
+          <p>- I LOOOOVEEE YOUUUUU KBIDTIII I LOOOOVEEE YOUUUU FOREVER I LOOOOVEEE YOUUU SOOOO MUUCH ❤️🪼</p>
+
+          <p class="letter-ending">🪼+🧸= ❤️♾️</p>
+        </div>
+        <button class="primary wide letter-close" data-go="gifts">more little gifts →</button>
+      </article>
+    </div>
+  </section>
+
+  <section class="page scene" id="song" aria-labelledby="song-title">
+    <button class="back" data-go="gifts" aria-label="Back to gifts">‹</button>
+    <span class="counter">5/7</span>
+    <div class="page-shell scene-shell song-shell">
+      <div class="top-space"></div>
+      <h1 id="song-title">songs<br>for you ♫</h1>
+      <p class="section-note">tap play — they stay right here on the website ♡</p>
+
+      <div class="song-list">
+        <div class="song-card">
+          <div class="song-label"><span>01</span> for you</div>
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/naUqWQ-of6o?playsinline=1&amp;rel=0"
+            title="Song for you 1"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+
+        <div class="song-card">
+          <div class="song-label"><span>02</span> one more</div>
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/kNkq8ZrUrO4?playsinline=1&amp;rel=0"
+            title="Song for you 2"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <button class="primary wide bottom-button" data-go="gifts">back to your gifts ♡</button>
+    </div>
+  </section>
+
+  <section class="page scene" id="memory" aria-labelledby="memory-title">
+    <button class="back" data-go="gifts" aria-label="Back to gifts">‹</button>
+    <span class="counter">6/7</span>
+    <div class="page-shell scene-shell memory-shell">
+      <div class="top-space"></div>
+      <h1 id="memory-title">a little<br>memory ♡</h1>
+
+      <div class="memory-gallery">
+        <div class="polaroid old-memory">
+          <div class="memory-art">
+            <div class="character couple memory-couple" role="img" aria-label="A sweet hug"></div>
+          </div>
+          <p>my favorite place is with you ♡</p>
+        </div>
+
+        <div class="polaroid photo-memory">
+          <div class="photo-frame">
+            <img id="memory-photo" alt="A childhood memory together">
+          </div>
+          <p>one of our little memories ♡</p>
+        </div>
+      </div>
+
+      <p class="memory-copy">The little moments.<br>The big smiles.<br>All the things that feel like us.</p>
+      <button class="primary wide bottom-button" data-go="final">one last thing →</button>
+    </div>
+  </section>
+
+  <section class="page scene night" id="final" aria-labelledby="final-title">
+    <button class="back" data-go="gifts" aria-label="Back to gifts">‹</button>
+    <span class="counter">7/7</span>
+    <div class="page-shell scene-shell final-shell">
+      <div class="top-space"></div>
+      <div class="thanks">
+        <h2 id="final-title">thank you<br>for being here ♡</h2>
+        <p>you make everything<br>more special.</p>
+      </div>
+      <div class="character heart final-character" role="img" aria-label="A happy boy hugging a pink heart with a kitten"></div>
+      <button class="primary wide" data-go="hello">⌂ back home</button>
+    </div>
+  </section>
+
 </main>
-<dialog id="wrong"><div class="wrong-boy character peek" role="img" aria-label="The curly-haired boy"></div><div class="wrong-card"><p>You are not my sweetheart. Please leave this website right now.</p><button class="primary" id="retry">OK</button></div></dialog>
-<noscript>This little surprise needs JavaScript to open its gifts.</noscript></body></html>
+
+<dialog id="wrong">
+  <div class="wrong-card">
+    <p>You are not my sweetheart. Please leave this website right now.</p>
+    <button class="primary" id="retry">OK</button>
+  </div>
+</dialog>
+
+<noscript>This little surprise needs JavaScript to open its gifts.</noscript>
+</body>
+</html>
