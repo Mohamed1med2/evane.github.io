@@ -11,6 +11,9 @@ const slots = document.querySelector(".slots");
 const keypad = document.querySelector(".keypad");
 const keys = ["1","2","3","4","5","6","7","8","9","clear","0","back"];
 
+const memoryPhoto = document.querySelector("#memory-photo");
+if (memoryPhoto && window.MEMORY_PHOTO) memoryPhoto.src = window.MEMORY_PHOTO;
+
 for (let i = 0; i < 4; i += 1) {
   const slot = document.createElement("span");
   slot.className = "slot empty";
