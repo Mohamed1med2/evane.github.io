@@ -1,22 +1,151 @@
-'use strict';
-const PASSWORD='0801';
-let entered='',unlocked=false,current='password';
-const pages=[...document.querySelectorAll('.page')];
-const dialog=document.querySelector('#wrong');
-const keys=['1','2','3','4','5','6','7','8','9','clear','0','back'];
-for(const pad of document.querySelectorAll('.keypad')){for(const key of keys){const button=document.createElement('button');button.type='button';button.dataset.key=key;button.textContent=key==='clear'?'♡':key==='back'?'←':key;button.setAttribute('aria-label',key==='clear'?'Clear code':key==='back'?'Delete last digit':key);button.addEventListener('click',()=>enter(key));pad.append(button);}}
-for(const row of document.querySelectorAll('.slots')){for(let i=0;i<4;i++){const s=document.createElement('span');s.className='slot empty';row.append(s);}}
-function render(){document.querySelectorAll('.slots').forEach(row=>[...row.children].forEach((s,i)=>{s.textContent=entered[i]||(row.classList.contains('mobile-slots')?'♥':'');s.classList.toggle('empty',!entered[i]);}));}
-function enter(key){if(current!=='password'||dialog.open)return;if(key==='clear')entered='';else if(key==='back')entered=entered.slice(0,-1);else if(entered.length<4)entered+=key;render();if(entered.length===4){if(entered===PASSWORD){unlocked=true;entered='';render();go('hello');}else dialog.showModal();}}
-function go(id){if(!document.getElementById(id)||(!unlocked&&id!=='password'))return;stopMusic();current=id;pages.forEach(p=>{p.classList.toggle('active',p.id===id);p.inert=p.id!==id;});if(id==='letter'){document.querySelector('.letter-paper').hidden=true;document.querySelector('#open-letter').hidden=false;document.querySelector('#open-letter').setAttribute('aria-expanded','false');document.querySelector('.tap').hidden=false;}window.scrollTo(0,0);const title=document.querySelector('#'+id+' h1, #'+id+' h2');if(title){title.tabIndex=-1;title.focus({preventScroll:true});}}
-document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
-function retry(){dialog.close();entered='';render();document.querySelector('.mobile-entry').offsetParent?document.querySelector('.mobile-keys button').focus():document.querySelector('.desktop-keys button').focus();}
-document.querySelector('#retry').addEventListener('click',retry);dialog.addEventListener('cancel',e=>{e.preventDefault();retry();});
-window.addEventListener('keydown',e=>{if(current!=='password'||dialog.open||e.ctrlKey||e.metaKey||e.altKey)return;if(/^\d$/.test(e.key)){e.preventDefault();enter(e.key);}else if(e.key==='Backspace'||e.key==='Delete'){e.preventDefault();enter('back');}else if(e.key==='Escape')enter('clear');});
-document.querySelector('#open-letter').addEventListener('click',e=>{e.currentTarget.setAttribute('aria-expanded','true');e.currentTarget.hidden=true;document.querySelector('.letter-paper').hidden=false;document.querySelector('.tap').hidden=true;});
-// A small original music-box melody; audio begins only after an explicit click.
-let audio,voices=[],timer,started=0,playing=false;
-const notes=[523.25,659.25,783.99,659.25,587.33,698.46,880,783.99,659.25,523.25,587.33,659.25,523.25,493.88,523.25,0,659.25,783.99,1046.5,987.77,880,783.99,659.25,587.33,523.25,659.25,587.33,493.88,523.25,0,523.25,0];
-function stopMusic(){clearInterval(timer);voices.forEach(v=>{try{v.stop();}catch{}});voices=[];playing=false;document.querySelector('.music-card').classList.remove('playing');document.querySelector('#play-song').textContent='▶';document.querySelector('#play-song').setAttribute('aria-pressed','false');document.querySelector('#play-song').setAttribute('aria-label','Play melody');document.querySelector('.progress i').style.width='0';document.querySelector('#music-status').textContent='press play ♡';}
-async function playMusic(){if(playing){stopMusic();return;}try{audio??=new(window.AudioContext||window.webkitAudioContext)();await audio.resume();const now=audio.currentTime+.05;notes.forEach((f,i)=>{if(!f)return;const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=f;o.connect(g);g.connect(audio.destination);const t=now+i*.43;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.16,t+.012);g.gain.exponentialRampToValueAtTime(.001,t+.8);o.start(t);o.stop(t+.85);voices.push(o);});playing=true;started=performance.now();document.querySelector('.music-card').classList.add('playing');document.querySelector('#play-song').textContent='Ⅱ';document.querySelector('#play-song').setAttribute('aria-pressed','true');document.querySelector('#play-song').setAttribute('aria-label','Pause melody');document.querySelector('#music-status').textContent='a little music-box love ♡';timer=setInterval(()=>{const f=(performance.now()-started)/(notes.length*430+500);document.querySelector('.progress i').style.width=Math.min(100,f*100)+'%';if(f>=1)stopMusic();},80);}catch{document.querySelector('#music-status').textContent='Audio is unavailable in this browser.';}}
-document.querySelector('#play-song').addEventListener('click',playMusic);document.querySelector('#stop-song').addEventListener('click',stopMusic);document.querySelector('#restart-song').addEventListener('click',()=>{stopMusic();playMusic();});document.addEventListener('visibilitychange',()=>{if(document.hidden)stopMusic();});render();go('password');
+"use strict";
+
+const PASSWORD = "0801";
+let entered = "";
+let unlocked = false;
+let current = "password";
+
+const pages = [...document.querySelectorAll(".page")];
+const dialog = document.querySelector("#wrong");
+const slots = document.querySelector(".slots");
+const keypad = document.querySelector(".keypad");
+const keys = ["1","2","3","4","5","6","7","8","9","clear","0","back"];
+
+const memoryPhoto = document.querySelector("#memory-photo");
+if (memoryPhoto && window.MEMORY_PHOTO) memoryPhoto.src = window.MEMORY_PHOTO;
+
+for (let i = 0; i < 4; i += 1) {
+  const slot = document.createElement("span");
+  slot.className = "slot empty";
+  slots.append(slot);
+}
+
+for (const key of keys) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.dataset.key = key;
+  button.textContent = key === "clear" ? "♡" : key === "back" ? "←" : key;
+  button.setAttribute("aria-label", key === "clear" ? "Clear code" : key === "back" ? "Delete last digit" : `Number ${key}`);
+  button.addEventListener("click", () => enter(key));
+  keypad.append(button);
+}
+
+function renderCode() {
+  [...slots.children].forEach((slot, index) => {
+    slot.textContent = entered[index] || "";
+    slot.classList.toggle("empty", !entered[index]);
+  });
+}
+
+function enter(key) {
+  if (current !== "password" || dialog.open) return;
+
+  if (key === "clear") entered = "";
+  else if (key === "back") entered = entered.slice(0, -1);
+  else if (entered.length < 4) entered += key;
+
+  renderCode();
+
+  if (entered.length === 4) {
+    if (entered === PASSWORD) {
+      unlocked = true;
+      entered = "";
+      renderCode();
+      go("hello");
+    } else {
+      dialog.showModal();
+    }
+  }
+}
+
+function resetLetter() {
+  const paper = document.querySelector(".letter-paper");
+  const envelope = document.querySelector("#open-letter");
+  const tap = document.querySelector(".tap");
+  paper.hidden = true;
+  envelope.hidden = false;
+  envelope.setAttribute("aria-expanded", "false");
+  tap.hidden = false;
+  const scrollFrame = document.querySelector(".letter-scroll");
+  if (scrollFrame) scrollFrame.scrollTop = 0;
+}
+
+function stopEmbeddedSongs() {
+  document.querySelectorAll("#song iframe").forEach((frame) => {
+    const src = frame.src;
+    frame.src = "about:blank";
+    requestAnimationFrame(() => {
+      frame.src = src;
+    });
+  });
+}
+
+function go(id) {
+  const next = document.getElementById(id);
+  if (!next || (!unlocked && id !== "password")) return;
+
+  if (current === "song" && id !== "song") stopEmbeddedSongs();
+
+  current = id;
+  pages.forEach((page) => {
+    const active = page.id === id;
+    page.classList.toggle("active", active);
+    page.inert = !active;
+    if (active) {
+      const shell = page.querySelector(".page-shell");
+      if (shell) shell.scrollTop = 0;
+    }
+  });
+
+  if (id === "letter") resetLetter();
+
+  const title = next.querySelector("h1, h2");
+  if (title) {
+    title.tabIndex = -1;
+    title.focus({ preventScroll: true });
+  }
+}
+
+document.querySelectorAll("[data-go]").forEach((button) => {
+  button.addEventListener("click", () => go(button.dataset.go));
+});
+
+document.querySelector("#open-letter").addEventListener("click", (event) => {
+  event.currentTarget.hidden = true;
+  event.currentTarget.setAttribute("aria-expanded", "true");
+  document.querySelector(".letter-paper").hidden = false;
+  document.querySelector(".tap").hidden = true;
+  requestAnimationFrame(() => document.querySelector(".letter-scroll").focus({ preventScroll: true }));
+});
+
+function retry() {
+  dialog.close();
+  entered = "";
+  renderCode();
+  keypad.querySelector("button")?.focus();
+}
+document.querySelector("#retry").addEventListener("click", retry);
+dialog.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  retry();
+});
+
+window.addEventListener("keydown", (event) => {
+  if (current !== "password" || dialog.open || event.ctrlKey || event.metaKey || event.altKey) return;
+  if (/^\d$/.test(event.key)) {
+    event.preventDefault();
+    enter(event.key);
+  } else if (event.key === "Backspace" || event.key === "Delete") {
+    event.preventDefault();
+    enter("back");
+  } else if (event.key === "Escape") {
+    enter("clear");
+  }
+});
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden && current === "song") stopEmbeddedSongs();
+});
+
+renderCode();
+go("password");
