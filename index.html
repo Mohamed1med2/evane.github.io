@@ -8,7 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260916-0158">
+  <link rel="stylesheet" href="styles.css?v=20260916-0218">
+  <link rel="stylesheet" href="media-images.css?v=20260916-0218">
 </head>
 <body>
 <main class="app-shell">
@@ -37,7 +38,7 @@
         </div>
       </div>
       <div class="character-side">
-        <div class="character raster-character char-couple wave" role="img" aria-label="Cute couple hugging"></div>
+        <div class="character-photo photo-couple"><img src="assets/screens/screen1-hq.webp" alt="Cute couple hugging"></div>
         <div class="speech">hey, baby!<br><small>try the secret code ♡</small></div>
       </div>
     </div>
@@ -46,7 +47,7 @@
   <section class="page" id="page-wrong">
     <div class="pixel-sky danger-bg" aria-hidden="true"></div>
     <div class="message-layout">
-      <div class="character raster-character char-angry angry" role="img" aria-label="Cute angry boy"></div>
+      <div class="character-photo photo-angry angry"><img src="assets/screens/screen2-hq.webp" alt="Cute angry boy"></div>
       <div class="message-card danger-card">
         <div class="badge">WRONG CODE</div>
         <h2>Excuse me?!</h2>
@@ -59,72 +60,48 @@
   <section class="page" id="page-hello">
     <div class="pixel-sky" aria-hidden="true"><i class="cloud c1"></i><i class="cloud c2"></i></div>
     <div class="hero-layout">
-      <div class="hero-copy">
-        <div class="eyebrow">YOU MADE IT ♡</div>
-        <h2>hey, baby!</h2>
-        <p>Welcome to your little surprise.</p>
-        <button class="primary" data-go="note">START</button>
-      </div>
-      <div class="character raster-character char-wave hello" role="img" aria-label="Cute boy waving"></div>
+      <div class="hero-copy"><div class="eyebrow">YOU MADE IT ♡</div><h2>hey, baby!</h2><p>Welcome to your little surprise.</p><button class="primary" data-go="note">START</button></div>
+      <div class="character-photo photo-wave hello"><img src="assets/screens/screen3-hq.webp" alt="Cute boy waving"></div>
     </div>
   </section>
 
   <section class="page" id="page-note">
     <div class="pixel-sky note-bg" aria-hidden="true"><i class="cloud c3"></i></div>
     <div class="note-layout">
-      <div class="character raster-character char-sit sit" role="img" aria-label="Cute boy sitting"></div>
-      <div class="speech-card">
-        <span class="bubble-label">HI LOVE ♡</span>
-        <p>I made this little website just for you.</p>
-        <p class="small-copy">A tiny place for a tiny message, a song, and a memory that belongs to us.</p>
-        <button class="round-next" data-go="gifts" aria-label="Next">→</button>
-      </div>
+      <div class="character-photo photo-sit sit"><img src="assets/screens/screen4-hq.webp" alt="Cute boy sitting"></div>
+      <div class="speech-card"><span class="bubble-label">HI LOVE ♡</span><p>I made this little website just for you.</p><p class="small-copy">A tiny place for a tiny message, a song, and a memory that belongs to us.</p><button class="round-next" data-go="gifts" aria-label="Next">→</button></div>
     </div>
   </section>
 
   <section class="page" id="page-gifts">
     <div class="pixel-sky gifts-bg" aria-hidden="true"></div>
     <div class="gift-layout">
-      <div class="gift-copy">
-        <div class="eyebrow">PICK ONE</div>
-        <h2>Choose your gift</h2>
-        <p>Every box hides something small.</p>
-      </div>
+      <div class="gift-copy"><div class="eyebrow">PICK ONE</div><h2>Choose your gift</h2><p>Every box hides something small.</p></div>
       <div class="gift-grid">
-        <button class="gift-card" data-gift="letter"><span class="gift-icon"><i></i></span><strong>A letter</strong><small>something from my heart</small></button>
-        <button class="gift-card" data-gift="song"><span class="gift-icon song"><i></i></span><strong>A song</strong><small>our little soundtrack</small></button>
-        <button class="gift-card" data-gift="memory"><span class="gift-icon memory"><i></i></span><strong>A memory</strong><small>a moment I kept</small></button>
+        <button class="gift-card" data-gift="letter"><span class="gift-image gift-letter"><img src="assets/screens/screen5-hq.webp" alt="Pink letter gift"></span><strong>A letter</strong><small>something from my heart</small></button>
+        <button class="gift-card" data-gift="song"><span class="gift-image gift-song"><img src="assets/screens/screen5-hq.webp" alt="Blue song gift"></span><strong>A song</strong><small>our little soundtrack</small></button>
+        <button class="gift-card" data-gift="memory"><span class="gift-image gift-memory"><img src="assets/screens/screen5-hq.webp" alt="Peach memory gift"></span><strong>A memory</strong><small>a moment I kept</small></button>
       </div>
-      <div class="character raster-character char-gift gift-boy" role="img" aria-label="Cute boy choosing a gift"></div>
+      <div class="character-photo photo-gift gift-boy"><img src="assets/screens/screen5-hq.webp" alt="Cute boy choosing a gift"></div>
     </div>
   </section>
 
   <section class="page" id="page-letter">
     <div class="pixel-sky letter-bg" aria-hidden="true"></div>
     <div class="letter-layout">
-      <div class="character raster-character char-peek envelope-boy" role="img" aria-label="Cute boy peeking over a letter"></div>
-      <div class="letter-card">
-        <span class="bubble-label">A LITTLE MESSAGE</span>
-        <h2 id="gift-title">For you ♡</h2>
-        <p id="gift-text">No matter how normal the day is, you somehow make it feel different.</p>
-        <button class="primary" data-go="final">OPEN THE LAST PAGE</button>
-      </div>
+      <div class="character-photo photo-peek envelope-boy"><img src="assets/screens/screen6-hq.webp" alt="Cute boy peeking over a letter"></div>
+      <div class="letter-card"><span class="bubble-label">A LITTLE MESSAGE</span><h2 id="gift-title">For you ♡</h2><p id="gift-text">No matter how normal the day is, you somehow make it feel different.</p><button class="primary" data-go="final">OPEN THE LAST PAGE</button></div>
     </div>
   </section>
 
   <section class="page" id="page-final">
     <div class="night-sky" aria-hidden="true"><span class="moon"></span><i class="twinkle t1"></i><i class="twinkle t2"></i><i class="twinkle t3"></i></div>
     <div class="final-layout">
-      <div class="final-copy">
-        <div class="eyebrow light">ONE LAST THING</div>
-        <h2>Thank you<br>for being here.</h2>
-        <p>That’s all. I just wanted you to have something made only for you.</p>
-        <button class="ghost" data-go="hello">↻ back to the beginning</button>
-      </div>
-      <div class="character raster-character char-heart heart-boy" role="img" aria-label="Cute boy hugging a heart"></div>
+      <div class="final-copy"><div class="eyebrow light">ONE LAST THING</div><h2>Thank you<br>for being here.</h2><p>That’s all. I just wanted you to have something made only for you.</p><button class="ghost" data-go="hello">↻ back to the beginning</button></div>
+      <div class="character-photo photo-heart heart-boy"><img src="assets/screens/screen7-hq.webp" alt="Cute boy hugging a heart"></div>
     </div>
   </section>
 </main>
-<script src="app.js?v=20260916-0158"></script>
+<script src="app.js?v=20260916-0218"></script>
 </body>
 </html>
