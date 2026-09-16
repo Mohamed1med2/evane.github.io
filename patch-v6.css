@@ -2,13 +2,21 @@
 .peek-character{
   width:min(68vw,300px);
   margin-top:-10px;
-  margin-bottom:-28px;
+  margin-bottom:-88px;
+  transform:translateY(16px);
+  position:relative;
+  z-index:4;
+  pointer-events:none;
 }
 .envelope{
-  margin-top:-8px;
+  margin-top:0;
+  position:relative;
+  z-index:2;
 }
 .letter-paper{
-  margin-top:-6px;
+  margin-top:0;
+  position:relative;
+  z-index:2;
 }
 .letter-scroll{
   height:min(50dvh,470px);
@@ -18,8 +26,8 @@
   -webkit-overflow-scrolling:touch;
   overscroll-behavior:contain;
   touch-action:pan-y pinch-zoom;
-  padding:14px 8px 38px 2px;
-  scroll-padding-bottom:38px;
+  padding:14px 8px 42px 2px;
+  scroll-padding-bottom:42px;
 }
 .letter-shell.reading-letter{
   overflow:hidden;
@@ -142,7 +150,16 @@
 }
 
 @media (max-height:680px){
-  .peek-character{width:min(60vw,250px);margin-bottom:-20px}
+  .peek-character{
+    width:min(60vw,250px);
+    margin-bottom:-72px;
+    transform:translateY(14px);
+  }
   .letter-paper{padding:13px}
-  .letter-scroll{height:min(47dvh,390px);max-height:47dvh;padding-bottom:34px}
+  .letter-scroll{
+    height:min(47dvh,390px);
+    max-height:47dvh;
+    padding-bottom:38px;
+    scroll-padding-bottom:38px;
+  }
 }
