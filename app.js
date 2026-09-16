@@ -14,6 +14,10 @@ const letterScroll = document.querySelector(".letter-scroll");
 const keys = ["1","2","3","4","5","6","7","8","9","clear","0","back"];
 const RELATIONSHIP_START = Date.parse("2026-01-08T00:00:00Z");
 
+const memoryPhoto = document.querySelector("#memory-photo");
+if (memoryPhoto && window.MEMORY_PHOTO) memoryPhoto.src = window.MEMORY_PHOTO;
+document.querySelectorAll(".memory-two, .memory-three").forEach((card) => card.remove());
+
 for (let i = 0; i < 4; i += 1) {
   const slot = document.createElement("span");
   slot.className = "slot empty";
