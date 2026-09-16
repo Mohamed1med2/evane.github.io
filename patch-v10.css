@@ -1,0 +1,10 @@
+/* v10: English help hint */
+.page-help::after{
+  content:"Tap here for more information" !important;
+  direction:ltr !important;
+  width:116px !important;
+  font-size:9px !important;
+  line-height:1.3 !important;
+  white-space:normal !important;
+  text-align:center !important;
+}
