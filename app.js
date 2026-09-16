@@ -9,10 +9,10 @@ const pages = [...document.querySelectorAll(".page")];
 const dialog = document.querySelector("#wrong");
 const slots = document.querySelector(".slots");
 const keypad = document.querySelector(".keypad");
+const letterShell = document.querySelector("#letter .page-shell");
+const letterScroll = document.querySelector(".letter-scroll");
 const keys = ["1","2","3","4","5","6","7","8","9","clear","0","back"];
-
-const memoryPhoto = document.querySelector("#memory-photo");
-if (memoryPhoto && window.MEMORY_PHOTO) memoryPhoto.src = window.MEMORY_PHOTO;
+const RELATIONSHIP_START = Date.parse("2026-01-08T00:00:00Z");
 
 for (let i = 0; i < 4; i += 1) {
   const slot = document.createElement("span");
@@ -28,6 +28,34 @@ for (const key of keys) {
   button.setAttribute("aria-label", key === "clear" ? "Clear code" : key === "back" ? "Delete last digit" : `Number ${key}`);
   button.addEventListener("click", () => enter(key));
   keypad.append(button);
+}
+
+function setLetterReadingState(isReading) {
+  if (!letterShell) return;
+  letterShell.classList.toggle("reading-letter", isReading);
+}
+
+function padTimer(value) {
+  return String(value).padStart(2, "0");
+}
+
+function updateLoveTimer() {
+  const daysEl = document.querySelector("#timer-days");
+  const hoursEl = document.querySelector("#timer-hours");
+  const minutesEl = document.querySelector("#timer-minutes");
+  const secondsEl = document.querySelector("#timer-seconds");
+  if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+  const totalSeconds = Math.max(0, Math.floor((Date.now() - RELATIONSHIP_START) / 1000));
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  daysEl.textContent = padTimer(days);
+  hoursEl.textContent = padTimer(hours);
+  minutesEl.textContent = padTimer(minutes);
+  secondsEl.textContent = padTimer(seconds);
 }
 
 function renderCode() {
@@ -66,8 +94,8 @@ function resetLetter() {
   envelope.hidden = false;
   envelope.setAttribute("aria-expanded", "false");
   tap.hidden = false;
-  const scrollFrame = document.querySelector(".letter-scroll");
-  if (scrollFrame) scrollFrame.scrollTop = 0;
+  setLetterReadingState(false);
+  if (letterScroll) letterScroll.scrollTop = 0;
 }
 
 function stopEmbeddedSongs() {
@@ -115,7 +143,13 @@ document.querySelector("#open-letter").addEventListener("click", (event) => {
   event.currentTarget.setAttribute("aria-expanded", "true");
   document.querySelector(".letter-paper").hidden = false;
   document.querySelector(".tap").hidden = true;
-  requestAnimationFrame(() => document.querySelector(".letter-scroll").focus({ preventScroll: true }));
+  setLetterReadingState(true);
+  requestAnimationFrame(() => {
+    if (letterScroll) {
+      letterScroll.scrollTop = 0;
+      letterScroll.focus({ preventScroll: true });
+    }
+  });
 });
 
 function retry() {
@@ -151,3 +185,9 @@ document.addEventListener("visibilitychange", () => {
 
 renderCode();
 go("password");
+
+letterScroll?.addEventListener("touchmove", (event) => event.stopPropagation(), { passive: true });
+letterScroll?.addEventListener("wheel", (event) => event.stopPropagation(), { passive: true });
+
+updateLoveTimer();
+setInterval(updateLoveTimer, 1000);
