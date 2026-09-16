@@ -37,3 +37,25 @@ h1[tabindex="-1"]:focus,h2[tabindex="-1"]:focus{outline:none}.character{backgrou
 @media(max-width:700px){.mobile-keypad-card{top:34%!important;height:40%!important}.mobile-laptop .couple{width:86%;left:7%;bottom:2%}}
 @media(max-width:360px){.mobile-keypad-card{top:34%!important;height:41%!important}.mobile-laptop .couple{width:84%;left:8%}}
 @media(max-width:700px){.mobile-speech{top:26%}}
+/* Let short phone viewports scroll naturally instead of allowing text and the card to collide. */
+@media(max-width:700px){
+  .mobile-laptop{display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start;height:100dvh!important;min-height:100dvh!important;overflow-y:auto;overflow-x:hidden;padding:24px 0 0;background:radial-gradient(ellipse at 50% 25%,#8f4e7e 0%,#4c2a60 56%,#281c3c 100%)!important;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+  .mobile-copy{position:relative;order:1;top:auto;left:auto;width:84%;height:auto;flex:0 0 auto;margin:0;text-align:left}
+  .mobile-copy h1{font-size:clamp(32px,10.5vw,48px);line-height:1.02}
+  .mobile-copy p{font-size:clamp(10px,2.9vw,14px);line-height:1.65;margin-top:16px}
+  .mobile-speech{position:relative;order:2;top:auto;right:auto;bottom:auto;align-self:flex-end;margin:12px 7% 0 0;transform:rotate(2deg);font-size:clamp(11px,3.4vw,15px)}
+  .mobile-keypad-card{position:relative;order:3;top:auto!important;left:auto;width:min(78%,330px);height:360px;flex:0 0 360px;margin:12px 0 0}
+  .mobile-laptop .couple{position:relative;order:4;left:auto;bottom:auto;width:min(88%,365px);height:auto;flex:0 0 auto;margin:-8px 0 0;aspect-ratio:3/2}
+  .mobile-laptop footer{position:relative;order:5;inset:auto;flex:0 0 48px;width:100%;margin-top:0}
+}
+@media(max-width:360px){
+  .mobile-laptop{padding-top:20px}.mobile-keypad-card{width:82%;height:340px;flex-basis:340px}.mobile-laptop .couple{width:86%}.mobile-speech{margin-right:5%;font-size:11px}
+}
+@media(max-width:700px){
+  #gifts .gift-grid{top:21%;height:34%;gap:6px 22px}
+  #gifts .present{max-height:96px;min-height:58px}
+  #gifts .gift{font-size:clamp(13px,3.8vw,18px);gap:5px}
+  #gifts .gift>span:last-child{background:#fff0efdd;border:1px solid #9b5b70;border-radius:8px;padding:2px 7px;line-height:1.1}
+  #gifts .pick{bottom:17%;font-size:14px}
+  #gifts .finish{bottom:6%;font-size:11px}
+}
