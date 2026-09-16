@@ -1,107 +1,17 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#d7a5c8">
-  <title>For You ♡</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260916-0218">
-  <link rel="stylesheet" href="media-images.css?v=20260916-0218">
-</head>
-<body>
-<main class="app-shell">
-  <section class="page active" id="page-password">
-    <div class="pixel-sky" aria-hidden="true"><i class="cloud c1"></i><i class="cloud c2"></i><i class="cloud c3"></i><i class="star s1"></i><i class="star s2"></i><i class="star s3"></i></div>
-    <div class="desktop-grid">
-      <div class="copy-side">
-        <div class="eyebrow">PRIVATE LITTLE PLACE ♡</div>
-        <h1>Guess the<br><span>password</span></h1>
-        <p>Only one person should know this code.</p>
-        <div class="desktop-hint">A tiny gift made just for you.</div>
-      </div>
-      <div class="interactive-side">
-        <div class="password-card">
-          <div class="mini-title">ENTER THE CODE</div>
-          <div class="slots" aria-live="polite">
-            <span class="slot" id="digit-0"></span><span class="slot" id="digit-1"></span><span class="slot" id="digit-2"></span><span class="slot" id="digit-3"></span>
-          </div>
-          <div class="keypad" aria-label="Password keypad">
-            <button class="key" data-key="1"><span>1</span><b>♥</b></button><button class="key" data-key="2"><span>2</span><b>♥</b></button><button class="key" data-key="3"><span>3</span><b>♥</b></button>
-            <button class="key" data-key="4"><span>4</span><b>♥</b></button><button class="key" data-key="5"><span>5</span><b>♥</b></button><button class="key" data-key="6"><span>6</span><b>♥</b></button>
-            <button class="key" data-key="7"><span>7</span><b>♥</b></button><button class="key" data-key="8"><span>8</span><b>♥</b></button><button class="key" data-key="9"><span>9</span><b>♥</b></button>
-            <button class="key util" data-action="clear"><span>×</span></button><button class="key" data-key="0"><span>0</span><b>♥</b></button><button class="key util" data-action="back"><span>←</span></button>
-          </div>
-          <div class="code-note">hint: four numbers ♡</div>
-        </div>
-      </div>
-      <div class="character-side">
-        <div class="character-photo photo-couple"><img src="assets/screens/screen1-hq.webp" alt="Cute couple hugging"></div>
-        <div class="speech">hey, baby!<br><small>try the secret code ♡</small></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="page" id="page-wrong">
-    <div class="pixel-sky danger-bg" aria-hidden="true"></div>
-    <div class="message-layout">
-      <div class="character-photo photo-angry angry"><img src="assets/screens/screen2-hq.webp" alt="Cute angry boy"></div>
-      <div class="message-card danger-card">
-        <div class="badge">WRONG CODE</div>
-        <h2>Excuse me?!</h2>
-        <p>You are not my sweetheart.<br>Please leave this website right now.</p>
-        <button class="primary" data-go="password">OK, let me try again</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="page" id="page-hello">
-    <div class="pixel-sky" aria-hidden="true"><i class="cloud c1"></i><i class="cloud c2"></i></div>
-    <div class="hero-layout">
-      <div class="hero-copy"><div class="eyebrow">YOU MADE IT ♡</div><h2>hey, baby!</h2><p>Welcome to your little surprise.</p><button class="primary" data-go="note">START</button></div>
-      <div class="character-photo photo-wave hello"><img src="assets/screens/screen3-hq.webp" alt="Cute boy waving"></div>
-    </div>
-  </section>
-
-  <section class="page" id="page-note">
-    <div class="pixel-sky note-bg" aria-hidden="true"><i class="cloud c3"></i></div>
-    <div class="note-layout">
-      <div class="character-photo photo-sit sit"><img src="assets/screens/screen4-hq.webp" alt="Cute boy sitting"></div>
-      <div class="speech-card"><span class="bubble-label">HI LOVE ♡</span><p>I made this little website just for you.</p><p class="small-copy">A tiny place for a tiny message, a song, and a memory that belongs to us.</p><button class="round-next" data-go="gifts" aria-label="Next">→</button></div>
-    </div>
-  </section>
-
-  <section class="page" id="page-gifts">
-    <div class="pixel-sky gifts-bg" aria-hidden="true"></div>
-    <div class="gift-layout">
-      <div class="gift-copy"><div class="eyebrow">PICK ONE</div><h2>Choose your gift</h2><p>Every box hides something small.</p></div>
-      <div class="gift-grid">
-        <button class="gift-card" data-gift="letter"><span class="gift-image gift-letter"><img src="assets/screens/screen5-hq.webp" alt="Pink letter gift"></span><strong>A letter</strong><small>something from my heart</small></button>
-        <button class="gift-card" data-gift="song"><span class="gift-image gift-song"><img src="assets/screens/screen5-hq.webp" alt="Blue song gift"></span><strong>A song</strong><small>our little soundtrack</small></button>
-        <button class="gift-card" data-gift="memory"><span class="gift-image gift-memory"><img src="assets/screens/screen5-hq.webp" alt="Peach memory gift"></span><strong>A memory</strong><small>a moment I kept</small></button>
-      </div>
-      <div class="character-photo photo-gift gift-boy"><img src="assets/screens/screen5-hq.webp" alt="Cute boy choosing a gift"></div>
-    </div>
-  </section>
-
-  <section class="page" id="page-letter">
-    <div class="pixel-sky letter-bg" aria-hidden="true"></div>
-    <div class="letter-layout">
-      <div class="character-photo photo-peek envelope-boy"><img src="assets/screens/screen6-hq.webp" alt="Cute boy peeking over a letter"></div>
-      <div class="letter-card"><span class="bubble-label">A LITTLE MESSAGE</span><h2 id="gift-title">For you ♡</h2><p id="gift-text">No matter how normal the day is, you somehow make it feel different.</p><button class="primary" data-go="final">OPEN THE LAST PAGE</button></div>
-    </div>
-  </section>
-
-  <section class="page" id="page-final">
-    <div class="night-sky" aria-hidden="true"><span class="moon"></span><i class="twinkle t1"></i><i class="twinkle t2"></i><i class="twinkle t3"></i></div>
-    <div class="final-layout">
-      <div class="final-copy"><div class="eyebrow light">ONE LAST THING</div><h2>Thank you<br>for being here.</h2><p>That’s all. I just wanted you to have something made only for you.</p><button class="ghost" data-go="hello">↻ back to the beginning</button></div>
-      <div class="character-photo photo-heart heart-boy"><img src="assets/screens/screen7-hq.webp" alt="Cute boy hugging a heart"></div>
-    </div>
-  </section>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#553568"><title>A little love, for you ♡</title><link rel="stylesheet" href="styles.css?v=3"><script defer src="app.js?v=3"></script></head>
+<body><main id="app">
+<section class="page active" id="password" aria-label="Guess the password">
+<div class="desktop-entry"><img src="assets/art/desktop-entry.webp" alt="Private little place. Guess the password. Only one person should know this code. A tiny gift made just for you." class="desktop-art"><div class="desktop-slots slots" aria-hidden="true"></div><div class="desktop-keys keypad"></div></div>
+<div class="mobile-entry scene"><h1>Guess the<br>password</h1><div class="mobile-slots slots" aria-label="Entered code" aria-live="polite"></div><div class="mobile-keys keypad"></div><div class="character couple" role="img" aria-label="A curly-haired boy hugging his sweetheart"></div><footer>just you and me ♡</footer></div>
+</section>
+<section class="page scene" id="hello" aria-labelledby="hello-title"><span class="floating-heart">♡</span><h1 class="hello-title" id="hello-title">hey,<br>baby!</h1><p class="welcome">welcome to my<br>little surprise ♡</p><div class="character wave" role="img" aria-label="A happy curly-haired boy waving"></div><button class="primary start" data-go="note">start <span>→</span></button><footer>made with love ♡</footer></section>
+<section class="page scene" id="note" aria-label="A little note"><button class="back" data-go="hello" aria-label="Back">‹</button><span class="counter">2/7</span><div class="speech"><p>hi love,<br>i made this little<br>website just for you ♡</p></div><div class="character shy" role="img" aria-label="A shy boy sitting with a kitten"></div><button class="next" data-go="gifts" aria-label="Choose your gifts">→</button><footer>♥ you make this world softer ♡</footer></section>
+<section class="page scene" id="gifts" aria-labelledby="gifts-title"><button class="back" data-go="note" aria-label="Back">‹</button><span class="counter">3/7</span><h1 id="gifts-title">choose<br>your gift !</h1><span class="gift-heart">♡</span><div class="gift-grid"><button class="gift pink" data-go="letter"><span class="present"><i class="bow"></i><i class="lid"></i><i class="box">♥</i></span><span>a letter</span></button><button class="gift blue" data-go="song"><span class="present"><i class="bow"></i><i class="lid"></i><i class="box">♥</i></span><span>a song</span></button><button class="gift peach" data-go="memory"><span class="present"><i class="bow"></i><i class="lid"></i><i class="box">♥</i></span><span>a memory</span></button></div><div class="character choosing" role="img" aria-label="The boy choosing a gift with his kitten"></div><span class="pick">pick<br>one !<br>♡</span><button class="finish" data-go="final">one last thing →</button><footer>♥ good things take time ♡</footer></section>
+<section class="page scene night" id="letter" aria-label="A letter for you"><button class="back" data-go="gifts" aria-label="Back to gifts">‹</button><span class="counter">4/7</span><div class="character peek" role="img" aria-label="The boy peeking over your letter"></div><button class="envelope" id="open-letter" aria-expanded="false"><span>a little message<br>just for you...</span><b>♥</b><i></i></button><article class="letter-paper" hidden><h2>hi, my love ♡</h2><p>Some people just make life brighter.<br>For me, that person is you.</p><p>I made this little place so you can always come back to a small reminder: you are loved, you are appreciated, and I’m so happy you’re here.</p><p>Always, you. ♡</p><button class="primary" data-go="gifts">more little gifts →</button></article><p class="tap">tap to open ♡</p><footer>a little love, just for you ♡</footer></section>
+<section class="page scene" id="song" aria-labelledby="song-title"><button class="back" data-go="gifts" aria-label="Back to gifts">‹</button><span class="counter">5/7</span><h1 id="song-title">a song<br>for you ♫</h1><div class="music-card"><div class="player-bar">♡ Now playing <span>— □ ×</span></div><div class="record"><span>♥</span></div><h2>A little love</h2><p>a tiny melody, just for you</p><div class="progress"><i></i></div><div class="player-controls"><button id="restart-song" aria-label="Restart melody">↺</button><button id="play-song" aria-label="Play melody" aria-pressed="false">▶</button><button id="stop-song" aria-label="Stop melody">■</button></div><p id="music-status" aria-live="polite">press play ♡</p></div><button class="primary gift-return" data-go="gifts">back to your gifts ♡</button><footer>some feelings sound like music ♡</footer></section>
+<section class="page scene" id="memory" aria-labelledby="memory-title"><button class="back" data-go="gifts" aria-label="Back to gifts">‹</button><span class="counter">6/7</span><h1 id="memory-title">a little<br>memory ♡</h1><div class="polaroid"><div class="memory-art"><div class="character couple" role="img" aria-label="A sweet hug"></div></div><p>my favorite place is with you ♡</p></div><p class="memory-copy">The little moments.<br>The big smiles.<br>All the things that feel like us.</p><button class="primary memory-next" data-go="final">one last thing →</button><footer>keeping this feeling forever ♡</footer></section>
+<section class="page scene night" id="final" aria-labelledby="final-title"><button class="back" data-go="gifts" aria-label="Back to gifts">‹</button><span class="counter">7/7</span><div class="thanks"><h2 id="final-title">thank you<br>for being here ♡</h2><p>you make everything<br>more special.</p></div><div class="character heart" role="img" aria-label="A happy boy hugging a pink heart with a kitten"></div><button class="primary home" data-go="hello">⌂ back home</button><footer>always, you ♡</footer></section>
 </main>
-<script src="app.js?v=20260916-0218"></script>
-</body>
-</html>
+<dialog id="wrong"><div class="wrong-boy character peek" role="img" aria-label="The curly-haired boy"></div><div class="wrong-card"><p>You are not my sweetheart. Please leave this website right now.</p><button class="primary" id="retry">OK</button></div></dialog>
+<noscript>This little surprise needs JavaScript to open its gifts.</noscript></body></html>
