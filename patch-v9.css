@@ -1,0 +1,117 @@
+/* Extra fixes: lower attached letter character + help button and modal */
+
+.page{position:relative}
+.page-help{
+  position:absolute;
+  top:18px;
+  right:18px;
+  z-index:15;
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  border:2px solid rgba(255,255,255,.28);
+  background:rgba(77,50,94,.72);
+  color:#fff9fd;
+  font-family:Pixel, system-ui, sans-serif;
+  font-size:21px;
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 18px rgba(19,8,28,.22), inset 0 1px 0 rgba(255,255,255,.18);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+}
+.page-help:active{transform:scale(.97)}
+.page-help:focus-visible,.about-close:focus-visible{outline:2px solid #ffd6ea;outline-offset:2px}
+#password .page-help,#hello .page-help{top:84px}
+#note .page-help,#gifts .page-help,#letter .page-help,#song .page-help,#memory .page-help,#final .page-help{top:86px;right:18px}
+
+/* Move the original letter character down so the hands sit on the card edge */
+.peek-character{
+  margin-top:0 !important;
+  margin-bottom:-104px !important;
+  transform:translateY(54px) !important;
+  z-index:8 !important;
+}
+.letter-paper{
+  margin-top:-2px !important;
+  padding-top:104px !important;
+}
+.letter-shell .top-space{height:0 !important; min-height:0 !important;}
+@media (max-height:760px){
+  .peek-character{
+    margin-bottom:-96px !important;
+    transform:translateY(46px) !important;
+  }
+  .letter-paper{padding-top:96px !important}
+}
+@media (max-height:680px){
+  .peek-character{
+    margin-bottom:-88px !important;
+    transform:translateY(40px) !important;
+  }
+  .letter-paper{padding-top:88px !important}
+}
+
+.about-dialog{
+  border:0;
+  padding:0;
+  background:transparent;
+  width:min(360px,92vw);
+  max-width:none;
+}
+.about-dialog::backdrop{
+  background:rgba(33,16,46,.64);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+}
+.about-card{
+  position:relative;
+  background:linear-gradient(180deg,#fffafc,#ffeef6);
+  border:3px solid #d98cae;
+  border-radius:24px;
+  padding:22px 20px 18px;
+  box-shadow:0 18px 36px rgba(36,12,44,.28), inset 0 0 0 3px #fff7fb;
+  color:#5a2d46;
+}
+.about-close{
+  position:absolute;
+  top:10px;
+  right:12px;
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  border:0;
+  background:#f5d6e6;
+  color:#7d4160;
+  font-size:24px;
+  line-height:1;
+}
+.about-badge{
+  width:54px;
+  height:54px;
+  border-radius:999px;
+  margin:0 auto 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg,#ff8bb8,#e96097);
+  color:white;
+  font-family:Pixel, system-ui, sans-serif;
+  font-size:28px;
+  box-shadow:0 10px 20px rgba(233,96,151,.28);
+}
+.about-card h3{
+  margin:0 0 10px;
+  text-align:center;
+  font-size:20px;
+  line-height:1.15;
+}
+.about-card p{
+  margin:0 0 10px;
+  text-align:center;
+  font-size:14px;
+  line-height:1.6;
+}
+.about-card p:last-of-type{margin-bottom:0}
