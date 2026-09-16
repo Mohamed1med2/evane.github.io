@@ -7,6 +7,7 @@
   <title>A little love, for you ♡</title>
   <link rel="stylesheet" href="mobile-v4.css?v=4">
   <link rel="stylesheet" href="patch-v8.css?v=2">
+  <link rel="stylesheet" href="patch-v9.css?v=1">
   <script defer src="memory-photo.js?v=1"></script>
   <script defer src="app.js?v=8"></script>
 </head>
@@ -14,6 +15,7 @@
 <main id="app">
 
   <section class="page password-page active" id="password" aria-label="Guess the password">
+    <button class="page-help" type="button" aria-label="Why this website?">?</button>
     <div class="page-shell password-shell">
       <div class="entry-copy">
         <div class="eyebrow">PRIVATE LITTLE PLACE ♡</div>
@@ -34,6 +36,7 @@
   </section>
 
   <section class="page scene" id="hello" aria-labelledby="hello-title">
+    <button class="page-help" type="button" aria-label="Why this website?">?</button>
     <div class="page-shell scene-shell">
       <div class="spacer-small"></div>
       <h1 class="hello-title" id="hello-title">hey,<br>baby!</h1>
@@ -46,6 +49,7 @@
   <section class="page scene" id="note" aria-label="A little note">
     <button class="back" data-go="hello" aria-label="Back">‹</button>
     <span class="counter">2/7</span>
+    <button class="page-help" type="button" aria-label="Why this website?">?</button>
     <div class="page-shell scene-shell">
       <div class="top-space"></div>
       <div class="speech-card">
@@ -59,6 +63,7 @@
   <section class="page scene" id="gifts" aria-labelledby="gifts-title">
     <button class="back" data-go="note" aria-label="Back">‹</button>
     <span class="counter">3/7</span>
+    <button class="page-help" type="button" aria-label="Why this website?">?</button>
     <div class="page-shell scene-shell gifts-shell">
       <div class="top-space"></div>
       <h1 id="gifts-title">choose<br>your gift !</h1>
@@ -88,6 +93,7 @@
   <section class="page scene night" id="letter" aria-label="A letter for you">
     <button class="back" data-go="gifts" aria-label="Back to gifts">‹</button>
     <span class="counter">4/7</span>
+    <button class="page-help" type="button" aria-label="Why this website?">?</button>
     <div class="page-shell scene-shell letter-shell">
       <div class="top-space"></div>
       <div class="character peek peek-character" role="img" aria-label="The boy peeking over your letter"></div>
@@ -153,6 +159,7 @@
   <section class="page scene" id="song" aria-labelledby="song-title">
     <button class="back" data-go="gifts" aria-label="Back to gifts">‹</button>
     <span class="counter">5/7</span>
+    <button class="page-help" type="button" aria-label="Why this website?">?</button>
     <div class="page-shell scene-shell song-shell">
       <div class="top-space"></div>
       <h1 id="song-title">songs<br>for you ♫</h1>
@@ -189,6 +196,7 @@
   <section class="page scene" id="memory" aria-labelledby="memory-title">
     <button class="back" data-go="gifts" aria-label="Back to gifts">‹</button>
     <span class="counter">6/7</span>
+    <button class="page-help" type="button" aria-label="Why this website?">?</button>
     <div class="page-shell scene-shell memory-shell">
       <div class="top-space"></div>
       <h1 id="memory-title">a little<br>memory ♡</h1>
@@ -217,6 +225,7 @@
   <section class="page scene night" id="final" aria-labelledby="final-title">
     <button class="back" data-go="gifts" aria-label="Back to gifts">‹</button>
     <span class="counter">7/7</span>
+    <button class="page-help" type="button" aria-label="Why this website?">?</button>
     <div class="page-shell scene-shell final-shell">
       <div class="top-space"></div>
       <div class="thanks">
@@ -240,6 +249,36 @@
     <button class="primary" id="retry">OK</button>
   </div>
 </dialog>
+
+<dialog id="about-site" class="about-dialog">
+  <div class="about-card">
+    <button class="about-close" type="button" aria-label="Close">×</button>
+    <div class="about-badge">?</div>
+    <h3>Why this little website exists ♡</h3>
+    <p>This little website was created by someone who fell deeply in love with one very special girl and wanted to give her something straight from his heart.</p>
+    <p>He wanted to turn his feelings into something she could open, keep, and return to whenever she wants — a gentle little gift filled with words, memories, music, and honest love.</p>
+    <p>Every page exists for one reason only: to let her feel how deeply, softly, and sincerely she is loved. ♡</p>
+  </div>
+</dialog>
+
+<script>
+  (() => {
+    const aboutDialog = document.getElementById('about-site');
+    const helpButtons = document.querySelectorAll('.page-help');
+    const closeButton = aboutDialog?.querySelector('.about-close');
+    if (aboutDialog && helpButtons.length) {
+      helpButtons.forEach(btn => btn.addEventListener('click', () => {
+        if (!aboutDialog.open) aboutDialog.showModal();
+      }));
+      closeButton?.addEventListener('click', () => aboutDialog.close());
+      aboutDialog.addEventListener('click', (event) => {
+        const rect = aboutDialog.querySelector('.about-card').getBoundingClientRect();
+        const inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+        if (!inside) aboutDialog.close();
+      });
+    }
+  })();
+</script>
 
 <noscript>This little surprise needs JavaScript to open its gifts.</noscript>
 </body>
