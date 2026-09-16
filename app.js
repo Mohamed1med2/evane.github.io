@@ -1,81 +1,16 @@
 const PASSWORD='0801';
 let entered='';
-
+const DESIGN_W=268, DESIGN_H=590;
 const stages=[...document.querySelectorAll('.stage')];
-const digitEls=[...document.querySelectorAll('.code-box')];
-const keyButtons=[...document.querySelectorAll('.keypad .key')];
-const navButtons=[...document.querySelectorAll('[data-go]')];
-
-function showScreen(number){
-  stages.forEach(stage=>stage.classList.toggle('active',stage.id===`screen-${number}`));
-}
-
-function renderDigits(){
-  digitEls.forEach((el,index)=>{el.textContent=entered[index]??'';});
-}
-
-function clearDigits(){
-  entered='';
-  renderDigits();
-}
-
-function validatePassword(){
-  if(entered.length!==4)return;
-  if(entered===PASSWORD){
-    clearDigits();
-    showScreen(3);
-  }else{
-    showScreen(2);
-  }
-}
-
-keyButtons.forEach(button=>{
-  button.addEventListener('click',()=>{
-    const action=button.dataset.action;
-    const key=button.dataset.key;
-
-    if(action==='clear'){
-      clearDigits();
-      return;
-    }
-    if(action==='back'){
-      entered=entered.slice(0,-1);
-      renderDigits();
-      return;
-    }
-    if(!key||entered.length>=4)return;
-
-    entered+=key;
-    renderDigits();
-    validatePassword();
-  });
-});
-
-navButtons.forEach(button=>{
-  button.addEventListener('click',()=>{
-    if(button.classList.contains('ok-btn'))clearDigits();
-    showScreen(Number(button.dataset.go));
-  });
-});
-
-window.addEventListener('keydown',event=>{
-  if(/^\d$/.test(event.key)){
-    if(entered.length<4){
-      entered+=event.key;
-      renderDigits();
-      validatePassword();
-    }
-    return;
-  }
-  if(event.key==='Backspace'||event.key==='Delete'){
-    entered=entered.slice(0,-1);
-    renderDigits();
-  }
-  if(event.key==='Escape'){
-    clearDigits();
-    showScreen(1);
-  }
-});
-
-renderDigits();
-showScreen(1);
+const artboards=[...document.querySelectorAll('.artboard')];
+const digits=[...document.querySelectorAll('.code-box')];
+function layout(){const vw=window.innerWidth,vh=window.innerHeight;const scale=Math.min(vw/DESIGN_W,vh/DESIGN_H);artboards.forEach(a=>a.style.transform=`translate(-50%,-50%) scale(${scale})`)}
+function show(n){stages.forEach(s=>s.classList.toggle('active',s.id===`screen-${n}`))}
+function render(){digits.forEach((d,i)=>d.textContent=entered[i]||'')}
+function clear(){entered='';render()}
+function validate(){if(entered.length!==4)return;if(entered===PASSWORD){clear();show(3)}else show(2)}
+document.querySelectorAll('.key').forEach(btn=>btn.addEventListener('click',()=>{const a=btn.dataset.action,k=btn.dataset.key;if(a==='clear'){clear();return}if(a==='back'){entered=entered.slice(0,-1);render();return}if(k&&entered.length<4){entered+=k;render();validate()}}));
+document.querySelectorAll('[data-go]').forEach(btn=>btn.addEventListener('click',()=>{if(btn.classList.contains('ok-btn'))clear();show(Number(btn.dataset.go))}));
+window.addEventListener('keydown',e=>{if(/^\d$/.test(e.key)&&entered.length<4){entered+=e.key;render();validate();return}if(e.key==='Backspace'||e.key==='Delete'){entered=entered.slice(0,-1);render();return}if(e.key==='Escape'){clear();show(1)}});
+window.addEventListener('resize',layout,{passive:true});window.addEventListener('orientationchange',()=>setTimeout(layout,80),{passive:true});
+render();show(1);layout();

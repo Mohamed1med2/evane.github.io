@@ -1,62 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#d9a6c8">
-<meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate">
-<title>For You ♡</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260916-0050">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#d8a7c9">
+  <title>For You ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260916-0140">
 </head>
 <body>
 <main class="app">
-  <section class="stage active" id="screen-1">
-    <img class="backdrop" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen1-hq.webp?v=hq7" alt="">
-    <div class="art">
-      <img class="panel" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen1-hq.webp?v=hq7" alt="Guess the password">
-      <div class="passcode-display"><span id="digit-0"></span><span id="digit-1"></span><span id="digit-2"></span><span id="digit-3"></span></div>
-      <div class="keypad">
-        <button class="key" data-key="1" aria-label="1"></button><button class="key" data-key="2" aria-label="2"></button><button class="key" data-key="3" aria-label="3"></button>
-        <button class="key" data-key="4" aria-label="4"></button><button class="key" data-key="5" aria-label="5"></button><button class="key" data-key="6" aria-label="6"></button>
-        <button class="key" data-key="7" aria-label="7"></button><button class="key" data-key="8" aria-label="8"></button><button class="key" data-key="9" aria-label="9"></button>
-        <button class="key" data-action="clear" aria-label="clear"></button><button class="key" data-key="0" aria-label="0"></button><button class="key" data-action="back" aria-label="backspace"></button>
+  <section class="stage active" id="screen-1" style="--bg:url('assets/screens/screen1-hq.webp')">
+    <div class="stage-fill"></div>
+    <div class="artboard">
+      <img src="assets/screens/screen1-hq.webp" class="screen-image" alt="Guess the password" draggable="false">
+      <div class="passcode-display" aria-live="polite"><span class="code-box" id="digit-0"></span><span class="code-box" id="digit-1"></span><span class="code-box" id="digit-2"></span><span class="code-box" id="digit-3"></span></div>
+      <div class="keypad" aria-label="Password keypad">
+        <button class="key k1" data-key="1" aria-label="1"></button><button class="key k2" data-key="2" aria-label="2"></button><button class="key k3" data-key="3" aria-label="3"></button>
+        <button class="key k4" data-key="4" aria-label="4"></button><button class="key k5" data-key="5" aria-label="5"></button><button class="key k6" data-key="6" aria-label="6"></button>
+        <button class="key k7" data-key="7" aria-label="7"></button><button class="key k8" data-key="8" aria-label="8"></button><button class="key k9" data-key="9" aria-label="9"></button>
+        <button class="key kstar" data-action="clear" aria-label="Clear"></button><button class="key k0" data-key="0" aria-label="0"></button><button class="key khash" data-action="back" aria-label="Backspace"></button>
       </div>
     </div>
   </section>
-
-  <section class="stage" id="screen-2">
-    <img class="backdrop" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen2-hq.webp?v=hq7" alt="">
-    <div class="art"><img class="panel" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen2-hq.webp?v=hq7" alt="Wrong password"><button class="hotspot ok-btn" data-go="1" aria-label="OK"></button></div>
-  </section>
-
-  <section class="stage" id="screen-3">
-    <img class="backdrop" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen3-hq.webp?v=hq7" alt="">
-    <div class="art"><img class="panel" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen3-hq.webp?v=hq7" alt="Hey baby"><button class="hotspot start-btn" data-go="4" aria-label="Start"></button></div>
-  </section>
-
-  <section class="stage" id="screen-4">
-    <img class="backdrop" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen4-hq.webp?v=hq7" alt="">
-    <div class="art"><img class="panel" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen4-hq.webp?v=hq7" alt="Hi love"><button class="hotspot next-btn" data-go="5" aria-label="Next"></button></div>
-  </section>
-
-  <section class="stage" id="screen-5">
-    <img class="backdrop" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen5-hq.webp?v=hq7" alt="">
-    <div class="art"><img class="panel" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen5-hq.webp?v=hq7" alt="Choose your gift"><button class="hotspot gift-1" data-go="6" aria-label="A letter"></button><button class="hotspot gift-2" data-go="6" aria-label="A song"></button><button class="hotspot gift-3" data-go="6" aria-label="A memory"></button></div>
-  </section>
-
-  <section class="stage" id="screen-6">
-    <img class="backdrop" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen6-hq.webp?v=hq7" alt="">
-    <div class="art"><img class="panel" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen6-hq.webp?v=hq7" alt="A little message"><button class="hotspot envelope-btn" data-go="7" aria-label="Open"></button></div>
-  </section>
-
-  <section class="stage" id="screen-7">
-    <img class="backdrop" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen7-hq.webp?v=hq7" alt="">
-    <div class="art"><img class="panel" src="https://raw.githubusercontent.com/Mohamed1med2/evane.github.io/main/assets/screens/screen7-hq.webp?v=hq7" alt="Thank you"><button class="hotspot home-btn" data-go="3" aria-label="Back home"></button></div>
-  </section>
+  <section class="stage" id="screen-2" style="--bg:url('assets/screens/screen2-hq.webp')"><div class="stage-fill"></div><div class="artboard"><img src="assets/screens/screen2-hq.webp" class="screen-image" alt="Wrong password" draggable="false"><button class="hotspot ok-btn" data-go="1" aria-label="OK"></button></div></section>
+  <section class="stage" id="screen-3" style="--bg:url('assets/screens/screen3-hq.webp')"><div class="stage-fill"></div><div class="artboard"><img src="assets/screens/screen3-hq.webp" class="screen-image" alt="Hey baby" draggable="false"><button class="hotspot start-btn" data-go="4" aria-label="Start"></button></div></section>
+  <section class="stage" id="screen-4" style="--bg:url('assets/screens/screen4-hq.webp')"><div class="stage-fill"></div><div class="artboard"><img src="assets/screens/screen4-hq.webp" class="screen-image" alt="Hi love" draggable="false"><button class="hotspot next-btn" data-go="5" aria-label="Next"></button></div></section>
+  <section class="stage" id="screen-5" style="--bg:url('assets/screens/screen5-hq.webp')"><div class="stage-fill"></div><div class="artboard"><img src="assets/screens/screen5-hq.webp" class="screen-image" alt="Choose your gift" draggable="false"><button class="hotspot gift-1" data-go="6" aria-label="A letter"></button><button class="hotspot gift-2" data-go="6" aria-label="A song"></button><button class="hotspot gift-3" data-go="6" aria-label="A memory"></button></div></section>
+  <section class="stage" id="screen-6" style="--bg:url('assets/screens/screen6-hq.webp')"><div class="stage-fill"></div><div class="artboard"><img src="assets/screens/screen6-hq.webp" class="screen-image" alt="Open the letter" draggable="false"><button class="hotspot envelope-btn" data-go="7" aria-label="Open letter"></button></div></section>
+  <section class="stage" id="screen-7" style="--bg:url('assets/screens/screen7-hq.webp')"><div class="stage-fill"></div><div class="artboard"><img src="assets/screens/screen7-hq.webp" class="screen-image" alt="Thank you" draggable="false"><button class="hotspot home-btn" data-go="3" aria-label="Back home"></button></div></section>
 </main>
-<script src="app.js?v=20260916-0050"></script>
+<script src="app.js?v=20260916-0140"></script>
 </body>
 </html>
