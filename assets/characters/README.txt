@@ -1,0 +1,1 @@
+Character image assets are being restored as raster images, not SVG/code-drawn characters.
