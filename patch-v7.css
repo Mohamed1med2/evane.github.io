@@ -1,0 +1,241 @@
+/* Final mobile fixes: exact angry reference, attached letter sticker, visible controls */
+
+/* LETTER — make the character hands sit directly on the card edge. */
+.letter-shell{
+  padding-left:16px;
+  padding-right:16px;
+  padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));
+}
+.peek-character{
+  position:relative;
+  z-index:6;
+  width:min(68vw,292px);
+  margin-top:-8px;
+  margin-bottom:-82px;
+  transform:translateY(20px);
+  pointer-events:none;
+}
+.envelope{
+  position:relative;
+  z-index:2;
+  margin-top:0;
+}
+.letter-paper{
+  position:relative;
+  z-index:2;
+  width:min(100%,410px);
+  margin-top:0;
+  padding:92px 15px 18px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.letter-header{
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+  justify-content:space-between;
+  border-bottom:1px dashed #c48ca5;
+  padding:0 2px 10px;
+}
+.letter-header h2{
+  max-width:58%;
+  margin:0;
+  font-size:clamp(17px,5vw,22px);
+  line-height:.92;
+  text-align:left;
+}
+.letter-header span{
+  flex:0 0 auto;
+  margin-top:5px;
+  font-size:10px;
+  opacity:.72;
+}
+.letter-scroll{
+  height:min(31dvh,280px);
+  max-height:min(31dvh,280px);
+  min-height:190px;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+  touch-action:pan-y pinch-zoom;
+  padding:14px 8px 64px 2px;
+  scroll-padding-bottom:64px;
+  margin-bottom:8px;
+}
+.letter-shell.reading-letter{overflow:hidden}
+.letter-close{
+  position:relative;
+  z-index:7;
+  width:100%;
+  min-height:46px;
+  margin:4px 0 calc(14px + env(safe-area-inset-bottom,0px));
+  font-size:15px;
+  box-shadow:none;
+  flex:0 0 auto;
+}
+
+/* Relationship timer. */
+.love-timer-card{
+  margin:8px 0 8px;
+  border:1px solid #d9a6bb;
+  border-radius:16px;
+  background:linear-gradient(180deg,#fff8fc,#ffe9f2);
+  padding:14px 12px;
+  box-shadow:inset 0 1px #fff9;
+}
+.love-timer-card h3{
+  font-family:Pixel,monospace;
+  font-size:16px;
+  text-align:center;
+  margin:0 0 8px;
+}
+.timer-copy{
+  text-align:center;
+  font-size:13px;
+  line-height:1.45;
+  margin:0 0 12px!important;
+}
+.timer-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.timer-unit{
+  border:2px solid #d98cae;
+  border-radius:14px;
+  background:#fffdfd;
+  padding:10px 8px;
+  text-align:center;
+}
+.timer-unit strong{
+  display:block;
+  font-size:24px;
+  color:#b33868;
+  line-height:1;
+}
+.timer-unit span{
+  display:block;
+  margin-top:6px;
+  font-size:11px;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+}
+
+/* MEMORIES — only the intended two cards. */
+.memory-two,.memory-three{display:none!important}
+.memory-gallery{gap:20px}
+.photo-frame img{image-rendering:auto}
+
+/* WRONG PASSWORD — use the approved angry sticker. */
+dialog#wrong{
+  border:0;
+  background:transparent;
+  width:min(360px,92vw);
+  max-width:none;
+  padding:0;
+  overflow:visible;
+}
+dialog#wrong::backdrop{
+  background:rgba(45,24,54,.64);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+}
+dialog#wrong .wrong-card{
+  position:relative;
+  overflow:visible;
+  width:100%;
+  margin:105px auto 0;
+  padding:126px 22px 24px;
+  background:#fff7f8;
+  border:4px solid #c75d8a;
+  border-radius:20px;
+  text-align:center;
+  line-height:1.5;
+  font-weight:800;
+  box-shadow:0 16px 36px rgba(35,9,37,.34),inset 0 0 0 3px #ffe1eb;
+}
+dialog#wrong .wrong-card p{
+  max-width:270px;
+  margin:0 auto;
+  font-size:18px;
+  line-height:1.48;
+}
+dialog#wrong .wrong-card .primary{
+  min-width:154px;
+  margin-top:20px;
+  font-size:18px;
+  border-radius:18px;
+}
+.angry-sticker{
+  position:absolute;
+  left:50%;
+  top:-126px;
+  width:min(91vw,354px);
+  aspect-ratio:560/417;
+  height:auto;
+  margin:0;
+  transform:translateX(-50%);
+  pointer-events:none;
+  background-image:url("error-angry-final.svg?v=1");
+  background-position:center bottom;
+  background-repeat:no-repeat;
+  background-size:contain;
+}
+.angry-character,.anger-mark{display:none!important}
+.angry-sticker::before,.angry-sticker::after{display:none!important}
+
+@media (max-height:760px){
+  .letter-scroll{
+    height:min(29dvh,250px);
+    max-height:min(29dvh,250px);
+    min-height:178px;
+  }
+  dialog#wrong .wrong-card{margin-top:96px;padding-top:116px}
+  .angry-sticker{top:-116px;width:min(88vw,326px)}
+}
+
+@media (max-height:680px){
+  .letter-header h2{max-width:56%;font-size:clamp(16px,4.6vw,20px)}
+  .letter-scroll{
+    height:min(26dvh,215px);
+    max-height:min(26dvh,215px);
+    min-height:160px;
+    padding-bottom:58px;
+    scroll-padding-bottom:58px;
+  }
+  .letter-close{font-size:14px;min-height:44px}
+  dialog#wrong .wrong-card{margin-top:88px;padding-top:108px}
+  .angry-sticker{top:-108px;width:min(84vw,300px)}
+}
+
+/* FINAL: keep the existing letter character, but attach its hands directly to the card edge. */
+.peek-character{
+  background-image:url("assets/art/characters-transparent.webp") !important;
+  background-repeat:no-repeat !important;
+  background-size:300% 200% !important;
+  background-position:50% 100% !important;
+  aspect-ratio:1/1 !important;
+  width:min(68vw,292px) !important;
+  margin-top:-8px !important;
+  margin-bottom:-8px !important;
+  transform:none !important;
+}
+.envelope{margin-top:0 !important;}
+.letter-paper{padding-top:24px !important;}
+@media (max-height:760px){
+  .peek-character{
+    width:min(64vw,266px) !important;
+    margin-bottom:-7px !important;
+    transform:none !important;
+  }
+  .letter-paper{padding-top:22px !important;}
+}
+@media (max-height:680px){
+  .peek-character{
+    width:min(58vw,236px) !important;
+    margin-bottom:-6px !important;
+    transform:none !important;
+  }
+  .letter-paper{padding-top:20px !important;}
+}
