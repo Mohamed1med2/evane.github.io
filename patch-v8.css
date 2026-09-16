@@ -1,4 +1,4 @@
-/* Final mobile fixes: approved angry error sticker + approved letter sticker */
+/* Final mobile fixes: approved angry error sticker + original letter character attached to the card */
 
 .letter-shell{
   padding-left:16px;
@@ -8,28 +8,28 @@
 .peek-character{
   position:relative;
   z-index:6;
-  width:min(69vw,294px)!important;
-  aspect-ratio:300/225!important;
+  width:min(68vw,292px)!important;
+  aspect-ratio:1/1!important;
   margin-top:-8px!important;
-  margin-bottom:-100px!important;
-  transform:translateY(30px)!important;
+  margin-bottom:-8px!important;
+  transform:none!important;
   pointer-events:none;
-  background-image:url("letter-peek-approved.svg?v=1")!important;
-  background-size:contain!important;
+  background-image:url("assets/art/characters-transparent.webp")!important;
+  background-size:300% 200%!important;
   background-repeat:no-repeat!important;
-  background-position:center bottom!important;
+  background-position:50% 100%!important;
 }
 .envelope{
   position:relative;
   z-index:2;
-  margin-top:0;
+  margin-top:0!important;
 }
 .letter-paper{
   position:relative;
   z-index:2;
   width:min(100%,410px);
   margin-top:0;
-  padding:96px 15px 18px!important;
+  padding:24px 15px 18px!important;
   overflow:hidden;
   display:flex;
   flex-direction:column;
@@ -173,12 +173,12 @@ dialog#wrong .wrong-card .primary{
   left:50%;
   top:-126px;
   width:min(91vw,354px);
-  aspect-ratio:300/225;
+  aspect-ratio:560/417;
   height:auto;
   margin:0;
   transform:translateX(-50%);
   pointer-events:none;
-  background-image:url("error-angry-approved.svg?v=1");
+  background-image:url("error-angry-final.svg?v=1");
   background-position:center bottom;
   background-repeat:no-repeat;
   background-size:contain;
@@ -188,11 +188,11 @@ dialog#wrong .wrong-card .primary{
 
 @media (max-height:760px){
   .peek-character{
-    width:min(65vw,268px)!important;
-    margin-bottom:-88px!important;
-    transform:translateY(25px)!important;
+    width:min(64vw,266px)!important;
+    margin-bottom:-7px!important;
+    transform:none!important;
   }
-  .letter-paper{padding-top:86px!important}
+  .letter-paper{padding-top:22px!important}
   .letter-scroll{
     height:min(29dvh,250px);
     max-height:min(29dvh,250px);
@@ -204,11 +204,11 @@ dialog#wrong .wrong-card .primary{
 
 @media (max-height:680px){
   .peek-character{
-    width:min(59vw,240px)!important;
-    margin-bottom:-76px!important;
-    transform:translateY(21px)!important;
+    width:min(58vw,236px)!important;
+    margin-bottom:-6px!important;
+    transform:none!important;
   }
-  .letter-paper{padding-top:78px!important}
+  .letter-paper{padding-top:20px!important}
   .letter-header h2{max-width:56%;font-size:clamp(16px,4.6vw,20px)}
   .letter-scroll{
     height:min(26dvh,215px);
