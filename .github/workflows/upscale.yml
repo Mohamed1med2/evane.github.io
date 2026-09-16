@@ -19,7 +19,7 @@ jobs:
       - name: Install image tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y imagemagick libheif1 webp
+          sudo apt-get install -y imagemagick libheif1 webp ffmpeg
 
       - name: Generate high quality WebP screens
         run: |
@@ -32,7 +32,15 @@ jobs:
               -quality 96 \
               "assets/screens/screen${i}-hq.webp"
           done
-          identify assets/screens/*-hq.webp
+
+          ffmpeg -y -err_detect ignore_err \
+            -i assets/screens/screen6.avif \
+            -frames:v 1 \
+            -vf "scale=iw*4:ih*4:flags=lanczos,unsharp=5:5:0.8:5:5:0.0" \
+            -c:v libwebp -quality 96 \
+            assets/screens/screen6-hq.webp || true
+
+          identify assets/screens/*-hq.webp || true
 
       - name: Commit generated assets
         run: |
