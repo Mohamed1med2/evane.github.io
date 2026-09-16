@@ -1,11 +1,18 @@
-/* Mobile polish: letter, timer, wrong-code card, memory quality */
+/* Final mobile polish: wrong-code popup, letter alignment, timer, memories */
+
+/* Letter character hugs the top edge without covering the title. */
+.letter-shell{
+  padding-left:16px;
+  padding-right:16px;
+  padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));
+}
 .peek-character{
-  width:min(68vw,300px);
-  margin-top:-10px;
-  margin-bottom:-88px;
-  transform:translateY(16px);
   position:relative;
   z-index:4;
+  width:min(68vw,292px);
+  margin-top:-8px;
+  margin-bottom:-54px;
+  transform:none;
   pointer-events:none;
 }
 .envelope{
@@ -14,24 +21,61 @@
   z-index:2;
 }
 .letter-paper{
-  margin-top:0;
   position:relative;
   z-index:2;
+  width:min(100%,410px);
+  margin-top:0;
+  padding:48px 15px 18px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.letter-header{
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+  justify-content:space-between;
+  border-bottom:1px dashed #c48ca5;
+  padding:0 2px 10px;
+}
+.letter-header h2{
+  max-width:56%;
+  margin:0;
+  font-size:clamp(17px,5vw,22px);
+  line-height:.92;
+  text-align:left;
+}
+.letter-header span{
+  flex:0 0 auto;
+  margin-top:5px;
+  font-size:10px;
+  opacity:.72;
 }
 .letter-scroll{
-  height:min(50dvh,470px);
-  max-height:50dvh;
-  min-height:280px;
+  height:min(38dvh,360px);
+  max-height:min(38dvh,360px);
+  min-height:230px;
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
   overscroll-behavior:contain;
   touch-action:pan-y pinch-zoom;
-  padding:14px 8px 42px 2px;
-  scroll-padding-bottom:42px;
+  padding:14px 8px 58px 2px;
+  scroll-padding-bottom:58px;
+  margin-bottom:8px;
 }
-.letter-shell.reading-letter{
-  overflow:hidden;
+.letter-shell.reading-letter{overflow:hidden}
+.letter-close{
+  position:sticky;
+  bottom:0;
+  z-index:5;
+  width:100%;
+  margin-top:2px;
+  margin-bottom:calc(10px + env(safe-area-inset-bottom,0px));
+  font-size:15px;
+  box-shadow:0 -8px 20px rgba(255,242,232,.92);
 }
+
+/* Relationship timer */
 .love-timer-card{
   margin:8px 0 8px;
   border:1px solid #d9a6bb;
@@ -77,31 +121,61 @@
   letter-spacing:.7px;
   text-transform:uppercase;
 }
-.memory-two .photo-frame{aspect-ratio:720/1151}
-.memory-three .photo-frame{aspect-ratio:1280/1227}
+
+/* Keep only the two intended memory cards. JS removes these too; this prevents flashes. */
+.memory-two,.memory-three{display:none!important}
+.memory-gallery{gap:20px}
 .photo-frame img{image-rendering:auto}
 
-.wrong-card{
+/* Wrong-password popup: larger angry character gripping the card like the reference. */
+dialog#wrong{
+  border:0;
+  background:transparent;
+  width:min(360px,92vw);
+  max-width:none;
+  padding:0;
+  overflow:visible;
+}
+dialog#wrong::backdrop{
+  background:rgba(45,24,54,.62);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+}
+dialog#wrong .wrong-card{
   position:relative;
   overflow:visible;
-  background:#fff3f5;
-  border:3px solid #c14d81;
-  border-radius:24px;
-  padding:82px 22px 24px;
-  margin-top:74px;
+  width:100%;
+  margin:88px auto 0;
+  padding:96px 22px 24px;
+  background:#fff7f8;
+  border:4px solid #c75d8a;
+  border-radius:22px;
   text-align:center;
-  box-shadow:0 10px 30px #22092566;
   line-height:1.5;
   font-weight:800;
+  box-shadow:0 16px 36px rgba(35,9,37,.32),inset 0 0 0 4px #ffe1eb;
+}
+dialog#wrong .wrong-card p{
+  max-width:265px;
+  margin:0 auto;
+  font-size:18px;
+  line-height:1.48;
+}
+dialog#wrong .wrong-card .primary{
+  min-width:154px;
+  margin-top:20px;
+  font-size:18px;
+  border-radius:20px;
 }
 .angry-sticker{
   position:absolute;
   left:50%;
-  top:-88px;
-  transform:translateX(-50%);
-  width:170px;
-  height:150px;
+  top:-112px;
+  width:218px;
+  height:182px;
   margin:0;
+  transform:translateX(-50%);
+  pointer-events:none;
 }
 .angry-character{
   position:absolute;
@@ -110,56 +184,72 @@
   background-repeat:no-repeat;
   background-size:300% 200%;
   background-position:50% 100%;
-  filter:saturate(1.05) contrast(1.03);
+  filter:saturate(1.12) contrast(1.06);
 }
-.angry-sticker::before,.angry-sticker::after{
-  content:"💭";
-  position:absolute;
-  top:58px;
-  font-size:28px;
-  filter:drop-shadow(0 2px 1px #fff8);
-}
-.angry-sticker::before{left:-10px}
-.angry-sticker::after{right:-10px}
+/* Angry brows make the existing sticker read much closer to the reference. */
 .angry-character:before,.angry-character:after{
   content:"";
   position:absolute;
-  top:34px;
-  width:25px;
-  height:5px;
+  z-index:3;
+  top:55px;
+  width:34px;
+  height:6px;
   border-radius:99px;
-  background:#5d1832;
-  box-shadow:0 1px #fff3;
+  background:#5b1735;
+  box-shadow:0 1px rgba(255,255,255,.25);
 }
-.angry-character:before{left:31px;transform:rotate(18deg)}
-.angry-character:after{right:31px;transform:rotate(-18deg)}
+.angry-character:before{left:40px;transform:rotate(27deg)}
+.angry-character:after{right:40px;transform:rotate(-27deg)}
+.angry-sticker::before,.angry-sticker::after{
+  content:"☁";
+  position:absolute;
+  z-index:4;
+  top:84px;
+  color:white;
+  font-size:34px;
+  line-height:1;
+  text-shadow:0 2px 0 #f1dbe5,0 3px 8px rgba(82,34,59,.2);
+}
+.angry-sticker::before{left:2px;transform:rotate(-16deg)}
+.angry-sticker::after{right:2px;transform:rotate(16deg)}
 .anger-mark{
   position:absolute;
-  z-index:2;
-  right:12px;
-  top:6px;
-  font-size:34px;
+  z-index:5;
+  right:29px;
+  top:18px;
+  font-size:40px;
   transform:rotate(10deg);
-  filter:drop-shadow(0 2px 1px #7e173f55);
+  filter:drop-shadow(0 2px 1px rgba(126,23,63,.35));
 }
-.wrong-card p{font-size:17px}
-.wrong-card .primary{
-  margin-top:18px;
-  min-width:150px;
-  font-size:18px;
+
+@media (max-height:760px){
+  .peek-character{
+    width:min(65vw,270px);
+    margin-bottom:-48px;
+  }
+  .letter-paper{padding-top:43px}
+  .letter-scroll{
+    height:min(34dvh,315px);
+    max-height:min(34dvh,315px);
+    min-height:205px;
+  }
 }
 
 @media (max-height:680px){
+  dialog#wrong .wrong-card{margin-top:78px;padding-top:88px}
+  .angry-sticker{width:198px;height:166px;top:-102px}
   .peek-character{
-    width:min(60vw,250px);
-    margin-bottom:-72px;
-    transform:translateY(14px);
+    width:min(61vw,248px);
+    margin-bottom:-42px;
   }
-  .letter-paper{padding:13px}
+  .letter-paper{padding-top:38px}
+  .letter-header h2{max-width:52%;font-size:clamp(16px,4.6vw,20px)}
   .letter-scroll{
-    height:min(47dvh,390px);
-    max-height:47dvh;
-    padding-bottom:38px;
-    scroll-padding-bottom:38px;
+    height:min(31dvh,275px);
+    max-height:min(31dvh,275px);
+    min-height:184px;
+    padding-bottom:60px;
+    scroll-padding-bottom:60px;
   }
+  .letter-close{font-size:14px}
 }
