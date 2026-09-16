@@ -8,99 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260916-0205">
+  <link rel="stylesheet" href="styles.css?v=20260916-0158">
 </head>
 <body>
-<svg class="svg-defs" aria-hidden="true" width="0" height="0">
-  <defs>
-    <linearGradient id="hairGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d1518"/><stop offset="1" stop-color="#4b342f"/></linearGradient>
-    <linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5d8c5"/><stop offset="1" stop-color="#e9bca6"/></linearGradient>
-    <linearGradient id="shirtGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff9fc"/><stop offset="1" stop-color="#eadff7"/></linearGradient>
-    <linearGradient id="pinkGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb1d0"/><stop offset="1" stop-color="#ee7eac"/></linearGradient>
-    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#633858" flood-opacity=".20"/></filter>
-
-    <symbol id="boy-base" viewBox="0 0 300 380">
-      <ellipse cx="150" cy="346" rx="76" ry="18" fill="#6b4962" opacity=".12"/>
-      <g filter="url(#softShadow)">
-        <path d="M90 275 Q150 238 210 275 L201 340 Q150 358 99 340Z" fill="url(#shirtGrad)"/>
-        <rect x="108" y="324" width="32" height="28" rx="14" fill="#ead0ca"/>
-        <rect x="160" y="324" width="32" height="28" rx="14" fill="#ead0ca"/>
-        <rect x="96" y="346" width="52" height="18" rx="9" fill="#fff"/>
-        <rect x="152" y="346" width="52" height="18" rx="9" fill="#fff"/>
-        <ellipse cx="150" cy="150" rx="79" ry="88" fill="url(#hairGrad)"/>
-        <ellipse cx="150" cy="166" rx="64" ry="70" fill="url(#skinGrad)"/>
-        <circle cx="88" cy="167" r="13" fill="#edc5b0"/>
-        <circle cx="212" cy="167" r="13" fill="#edc5b0"/>
-        <g fill="url(#hairGrad)">
-          <circle cx="93" cy="91" r="31"/><circle cx="126" cy="75" r="34"/><circle cx="161" cy="72" r="35"/><circle cx="196" cy="88" r="32"/>
-          <circle cx="80" cy="123" r="27"/><circle cx="111" cy="111" r="29"/><circle cx="146" cy="103" r="30"/><circle cx="179" cy="106" r="29"/><circle cx="211" cy="123" r="27"/>
-        </g>
-        <path d="M95 132 Q122 91 153 121 Q174 87 205 133 Q196 112 178 108 Q150 96 121 109 Q104 115 95 132Z" fill="url(#hairGrad)"/>
-        <path d="M102 122 Q116 137 128 141 Q139 129 145 118 Q156 136 174 141 Q188 130 198 118" fill="none" stroke="#281c1c" stroke-width="16" stroke-linecap="round"/>
-        <ellipse cx="126" cy="174" rx="8" ry="11" fill="#4f372c"/><ellipse cx="175" cy="174" rx="8" ry="11" fill="#4f372c"/>
-        <circle cx="129" cy="170" r="2.6" fill="#fff"/><circle cx="178" cy="170" r="2.6" fill="#fff"/>
-        <ellipse cx="111" cy="196" rx="17" ry="8" fill="#ee9fb0" opacity=".34"/><ellipse cx="190" cy="196" rx="17" ry="8" fill="#ee9fb0" opacity=".34"/>
-        <path d="M142 204 Q150 212 158 204" fill="none" stroke="#a26870" stroke-width="3.5" stroke-linecap="round"/>
-        <rect x="137" y="231" width="26" height="28" rx="11" fill="#efc7b4"/>
-        <path d="M120 263 Q150 285 180 263" fill="none" stroke="#cfafd9" stroke-width="9" stroke-linecap="round"/>
-      </g>
-    </symbol>
-
-    <symbol id="boy-wave" viewBox="0 0 360 420">
-      <use href="#boy-base" x="30" y="20" width="300" height="380"/>
-      <g filter="url(#softShadow)">
-        <path d="M232 290 Q278 255 293 207" fill="none" stroke="#f7f4fb" stroke-width="25" stroke-linecap="round"/>
-        <circle cx="299" cy="195" r="16" fill="#f0cbb8"/>
-        <path d="M295 178 l-9 -18 M302 177 l3 -21 M309 180 l13 -15" stroke="#e6b5a3" stroke-width="5" stroke-linecap="round"/>
-      </g>
-      <g fill="#ff87b4"><path d="M302 101c10-13 29-2 19 12l-19 21-19-21c-10-14 9-25 19-12Z"/><circle cx="326" cy="86" r="5" opacity=".7"/></g>
-    </symbol>
-
-    <symbol id="boy-sit" viewBox="0 0 360 420">
-      <use href="#boy-base" x="30" y="8" width="300" height="380"/>
-      <path d="M86 334 Q180 294 274 334 L255 382 Q180 404 105 382Z" fill="#f7f0fa"/>
-      <path d="M113 336 Q152 348 180 333 Q208 348 247 336" fill="none" stroke="#d8b5dc" stroke-width="9" stroke-linecap="round"/>
-      <circle cx="146" cy="337" r="12" fill="#efc7b4"/><circle cx="214" cy="337" r="12" fill="#efc7b4"/>
-      <path d="M126 316 Q145 333 158 342 M235 316 Q217 332 203 342" fill="none" stroke="#f7f4fb" stroke-width="22" stroke-linecap="round"/>
-    </symbol>
-
-    <symbol id="boy-gift" viewBox="0 0 360 420">
-      <use href="#boy-base" x="30" y="18" width="300" height="380"/>
-      <g filter="url(#softShadow)">
-        <rect x="210" y="280" width="92" height="74" rx="13" fill="#ffd9b0" stroke="#774763" stroke-width="5"/>
-        <rect x="202" y="267" width="108" height="25" rx="10" fill="#ff91bb" stroke="#774763" stroke-width="5"/>
-        <rect x="250" y="273" width="13" height="81" fill="#ff89b4"/>
-        <path d="M250 273c-31-21-47-4-32 14 12 14 26 5 32-14Zm13 0c31-21 47-4 32 14-12 14-26 5-32-14Z" fill="#ffd75e" stroke="#774763" stroke-width="4"/>
-      </g>
-    </symbol>
-
-    <symbol id="boy-envelope" viewBox="0 0 360 420">
-      <use href="#boy-base" x="30" y="4" width="300" height="380"/>
-      <g transform="translate(58 268)" filter="url(#softShadow)">
-        <rect x="0" y="0" width="244" height="116" rx="18" fill="#fff8fb" stroke="#cf9bb9" stroke-width="4"/>
-        <path d="M3 8 122 76 241 8" fill="#f7dce8" stroke="#cf9bb9" stroke-width="4" stroke-linejoin="round"/>
-        <path d="M4 109 93 49 M240 109 151 49" stroke="#e5bfd0" stroke-width="4"/>
-        <path d="M122 56c11-15 34-2 23 14l-23 25-23-25c-11-16 12-29 23-14Z" fill="#ef709e"/>
-      </g>
-    </symbol>
-
-    <symbol id="boy-heart" viewBox="0 0 360 420">
-      <use href="#boy-base" x="30" y="0" width="300" height="380"/>
-      <path d="M180 270c31-42 89-8 56 36l-56 60-56-60c-33-44 25-78 56-36Z" fill="url(#pinkGrad)" filter="url(#softShadow)"/>
-      <path d="M112 286 Q137 304 154 324 M248 286 Q224 304 207 324" fill="none" stroke="#f7f4fb" stroke-width="22" stroke-linecap="round"/>
-      <circle cx="156" cy="326" r="12" fill="#efc7b4"/><circle cx="205" cy="326" r="12" fill="#efc7b4"/>
-    </symbol>
-
-    <symbol id="boy-angry" viewBox="0 0 360 420">
-      <use href="#boy-base" x="30" y="10" width="300" height="380"/>
-      <path d="M135 182 117 176 M177 176 195 182" stroke="#704248" stroke-width="5" stroke-linecap="round"/>
-      <path d="M170 211 Q180 202 190 211" fill="none" stroke="#a26870" stroke-width="4" stroke-linecap="round"/>
-      <path d="M279 120h27m-13-14v28" stroke="#e75c82" stroke-width="7" stroke-linecap="round"/>
-      <path d="M300 90l18 10m-23 9 20 0" stroke="#e75c82" stroke-width="5" stroke-linecap="round"/>
-    </symbol>
-  </defs>
-</svg>
-
 <main class="app-shell">
   <section class="page active" id="page-password">
     <div class="pixel-sky" aria-hidden="true"><i class="cloud c1"></i><i class="cloud c2"></i><i class="cloud c3"></i><i class="star s1"></i><i class="star s2"></i><i class="star s3"></i></div>
@@ -127,7 +37,7 @@
         </div>
       </div>
       <div class="character-side">
-        <svg class="character wave" viewBox="0 0 360 420"><use href="#boy-wave"/></svg>
+        <div class="character raster-character char-couple wave" role="img" aria-label="Cute couple hugging"></div>
         <div class="speech">hey, baby!<br><small>try the secret code ♡</small></div>
       </div>
     </div>
@@ -136,7 +46,7 @@
   <section class="page" id="page-wrong">
     <div class="pixel-sky danger-bg" aria-hidden="true"></div>
     <div class="message-layout">
-      <svg class="character angry" viewBox="0 0 360 420"><use href="#boy-angry"/></svg>
+      <div class="character raster-character char-angry angry" role="img" aria-label="Cute angry boy"></div>
       <div class="message-card danger-card">
         <div class="badge">WRONG CODE</div>
         <h2>Excuse me?!</h2>
@@ -155,14 +65,14 @@
         <p>Welcome to your little surprise.</p>
         <button class="primary" data-go="note">START</button>
       </div>
-      <svg class="character hello" viewBox="0 0 360 420"><use href="#boy-wave"/></svg>
+      <div class="character raster-character char-wave hello" role="img" aria-label="Cute boy waving"></div>
     </div>
   </section>
 
   <section class="page" id="page-note">
     <div class="pixel-sky note-bg" aria-hidden="true"><i class="cloud c3"></i></div>
     <div class="note-layout">
-      <svg class="character sit" viewBox="0 0 360 420"><use href="#boy-sit"/></svg>
+      <div class="character raster-character char-sit sit" role="img" aria-label="Cute boy sitting"></div>
       <div class="speech-card">
         <span class="bubble-label">HI LOVE ♡</span>
         <p>I made this little website just for you.</p>
@@ -185,14 +95,14 @@
         <button class="gift-card" data-gift="song"><span class="gift-icon song"><i></i></span><strong>A song</strong><small>our little soundtrack</small></button>
         <button class="gift-card" data-gift="memory"><span class="gift-icon memory"><i></i></span><strong>A memory</strong><small>a moment I kept</small></button>
       </div>
-      <svg class="character gift-boy" viewBox="0 0 360 420"><use href="#boy-gift"/></svg>
+      <div class="character raster-character char-gift gift-boy" role="img" aria-label="Cute boy choosing a gift"></div>
     </div>
   </section>
 
   <section class="page" id="page-letter">
     <div class="pixel-sky letter-bg" aria-hidden="true"></div>
     <div class="letter-layout">
-      <svg class="character envelope-boy" viewBox="0 0 360 420"><use href="#boy-envelope"/></svg>
+      <div class="character raster-character char-peek envelope-boy" role="img" aria-label="Cute boy peeking over a letter"></div>
       <div class="letter-card">
         <span class="bubble-label">A LITTLE MESSAGE</span>
         <h2 id="gift-title">For you ♡</h2>
@@ -211,10 +121,10 @@
         <p>That’s all. I just wanted you to have something made only for you.</p>
         <button class="ghost" data-go="hello">↻ back to the beginning</button>
       </div>
-      <svg class="character heart-boy" viewBox="0 0 360 420"><use href="#boy-heart"/></svg>
+      <div class="character raster-character char-heart heart-boy" role="img" aria-label="Cute boy hugging a heart"></div>
     </div>
   </section>
 </main>
-<script src="app.js?v=20260916-0205"></script>
+<script src="app.js?v=20260916-0158"></script>
 </body>
 </html>
