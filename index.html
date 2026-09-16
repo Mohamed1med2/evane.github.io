@@ -6,8 +6,9 @@
   <meta name="theme-color" content="#5a356b">
   <title>A little love, for you ♡</title>
   <link rel="stylesheet" href="mobile-v4.css?v=3">
+  <link rel="stylesheet" href="patch-v6.css?v=1">
   <script defer src="memory-photo.js?v=1"></script>
-  <script defer src="app.js?v=6"></script>
+  <script defer src="app.js?v=7"></script>
 </head>
 <body>
 <main id="app">
@@ -131,6 +132,17 @@
           <p>- lyouma 9arebt nsali had site 3reftiii far7aaaaan bezaaaaf baghi gha imta nsefto liiiik</p>
           <p>- I LOOOOVEEE YOUUUUU KBIDTIII I LOOOOVEEE YOUUUU FOREVER I LOOOOVEEE YOUUU SOOOO MUUCH ❤️🪼</p>
 
+          <section class="love-timer-card" aria-labelledby="love-timer-title">
+            <h3 id="love-timer-title">Our forever has already begun ♡</h3>
+            <p class="timer-copy">Every second with you feels precious. Here is how long we have already been together:</p>
+            <div class="timer-grid" id="love-timer" aria-live="polite">
+              <div class="timer-unit"><strong id="timer-days">00</strong><span>Days</span></div>
+              <div class="timer-unit"><strong id="timer-hours">00</strong><span>Hours</span></div>
+              <div class="timer-unit"><strong id="timer-minutes">00</strong><span>Minutes</span></div>
+              <div class="timer-unit"><strong id="timer-seconds">00</strong><span>Seconds</span></div>
+            </div>
+          </section>
+
           <p class="letter-ending">🪼+🧸= ❤️♾️</p>
         </div>
         <button class="primary wide letter-close" data-go="gifts">more little gifts →</button>
@@ -198,14 +210,14 @@
 
         <div class="polaroid photo-memory memory-two">
           <div class="photo-frame">
-            <img src="memory-2.jpg" alt="A Roblox memory under the pink tree">
+            <img id="memory-photo-2" src="memory-2.jpg" alt="A Roblox memory under the pink tree">
           </div>
           <p>another little memory under the blossoms ♡</p>
         </div>
 
         <div class="polaroid photo-memory memory-three">
           <div class="photo-frame">
-            <img src="memory-3.jpg" alt="A Roblox memory with yellow duck outfits">
+            <img id="memory-photo-3" src="memory-3.jpg" alt="A Roblox memory with yellow duck outfits">
           </div>
           <p>and one more adorable memory together ♡</p>
         </div>
