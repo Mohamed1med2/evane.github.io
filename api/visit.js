@@ -53,6 +53,8 @@ export default async function handler(req, res) {
   const body = req.body && typeof req.body === 'object' ? req.body : {};
   const now = new Date();
   const device = clean(body.device || friendlyDevice(req.headers['user-agent']), 120);
+  const model = clean(body.model || 'Model not exposed by browser', 220);
+  const screen = clean(body.screen || 'Unknown', 80);
   const referrer = clean(body.referrer || req.headers.referer || 'Direct visit', 180);
   const page = clean(body.page || 'Love Website', 120);
 
@@ -64,6 +66,8 @@ export default async function handler(req, res) {
       fields: [
         { name: '🕒 Time', value: now.toLocaleString('en-GB', { timeZone: 'UTC', hour12: false }) + ' UTC' },
         { name: '📱 Device', value: device },
+        { name: '📲 Device Model', value: model },
+        { name: '🖥️ Screen', value: screen },
         { name: '🔗 Referrer', value: referrer },
         { name: '🌐 Page', value: page }
       ],
