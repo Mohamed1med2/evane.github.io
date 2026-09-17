@@ -24,7 +24,7 @@ function friendlyDevice(userAgent) {
   else if (/Linux/i.test(ua)) device = 'Linux';
 
   let browser = 'Browser';
-  if (/Edg\//i.test(ua)) browser = 'Edge';
+  if (/EdgiOS|Edg\//i.test(ua)) browser = 'Edge';
   else if (/CriOS|Chrome\//i.test(ua)) browser = 'Chrome';
   else if (/FxiOS|Firefox\//i.test(ua)) browser = 'Firefox';
   else if (/Safari\//i.test(ua) && !/Chrome|CriOS|Edg\//i.test(ua)) browser = 'Safari';
@@ -53,7 +53,8 @@ export default async function handler(req, res) {
   const body = req.body && typeof req.body === 'object' ? req.body : {};
   const now = new Date();
   const device = clean(body.device || friendlyDevice(req.headers['user-agent']), 120);
-  const model = clean(body.model || 'Model not exposed by browser', 220);
+  const model = clean(body.model || 'Exact model not exposed by browser', 220);
+  const os = clean(body.os || 'Unknown OS', 120);
   const screen = clean(body.screen || 'Unknown', 80);
   const referrer = clean(body.referrer || req.headers.referer || 'Direct visit', 180);
   const page = clean(body.page || 'Love Website', 120);
@@ -67,11 +68,12 @@ export default async function handler(req, res) {
         { name: '🕒 Time', value: now.toLocaleString('en-GB', { timeZone: 'UTC', hour12: false }) + ' UTC' },
         { name: '📱 Device', value: device },
         { name: '📲 Device Model', value: model },
+        { name: '⚙️ OS', value: os },
         { name: '🖥️ Screen', value: screen },
         { name: '🔗 Referrer', value: referrer },
         { name: '🌐 Page', value: page }
       ],
-      footer: { text: 'A little visit to your love website ♡' },
+      footer: { text: 'Device details are limited to what the browser exposes ♡' },
       timestamp: now.toISOString()
     }]
   };
