@@ -13,6 +13,25 @@ function clean(value, max = 180) {
   return value.replace(/[\r\n\t]+/g, ' ').trim().slice(0, max) || 'Unknown';
 }
 
+function friendlyDevice(userAgent) {
+  const ua = String(userAgent || '');
+  let device = 'Desktop';
+  if (/iPhone/i.test(ua)) device = 'iPhone';
+  else if (/iPad/i.test(ua)) device = 'iPad';
+  else if (/Android/i.test(ua)) device = 'Android';
+  else if (/Macintosh|Mac OS X/i.test(ua)) device = 'Mac';
+  else if (/Windows/i.test(ua)) device = 'Windows PC';
+  else if (/Linux/i.test(ua)) device = 'Linux';
+
+  let browser = 'Browser';
+  if (/Edg\//i.test(ua)) browser = 'Edge';
+  else if (/CriOS|Chrome\//i.test(ua)) browser = 'Chrome';
+  else if (/FxiOS|Firefox\//i.test(ua)) browser = 'Firefox';
+  else if (/Safari\//i.test(ua) && !/Chrome|CriOS|Edg\//i.test(ua)) browser = 'Safari';
+
+  return `${device} / ${browser}`;
+}
+
 export default async function handler(req, res) {
   setCors(req, res);
 
@@ -33,8 +52,8 @@ export default async function handler(req, res) {
 
   const body = req.body && typeof req.body === 'object' ? req.body : {};
   const now = new Date();
-  const device = clean(body.device || req.headers['user-agent'] || 'Unknown', 220);
-  const referrer = clean(body.referrer || 'Direct visit', 180);
+  const device = clean(body.device || friendlyDevice(req.headers['user-agent']), 120);
+  const referrer = clean(body.referrer || req.headers.referer || 'Direct visit', 180);
   const page = clean(body.page || 'Love Website', 120);
 
   const payload = {
