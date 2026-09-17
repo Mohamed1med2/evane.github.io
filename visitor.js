@@ -2,7 +2,7 @@
 
 (() => {
   const ENDPOINT = "https://evane-github-io.vercel.app/api/visit";
-  const KEY = "visit_notified_v1";
+  const KEY = "visit_notified_v2";
 
   try {
     if (sessionStorage.getItem(KEY) === "1") return;
@@ -38,56 +38,74 @@
     return samsungName(model);
   }
 
-  function appleScreenClass() {
-    const sw = Math.min(screen.width || 0, screen.height || 0);
-    const sh = Math.max(screen.width || 0, screen.height || 0);
-    const dpr = Number(window.devicePixelRatio || 1);
-    const key = `${sw}x${sh}@${dpr}`;
-    const classes = {
-      "440x956@3": "iPhone 16 Pro Max screen class",
-      "402x874@3": "iPhone 16 Pro screen class",
-      "430x932@3": "iPhone 14/15 Pro Max screen class",
-      "393x852@3": "iPhone 14/15 Pro screen class",
-      "428x926@3": "iPhone 12/13 Pro Max or 14 Plus screen class",
-      "390x844@3": "iPhone 12/13/14 screen class",
-      "375x812@3": "iPhone X/XS/11 Pro or 12/13 mini screen class",
-      "414x896@2": "iPhone XR/11 screen class",
-      "414x896@3": "iPhone XS Max/11 Pro Max screen class",
-      "414x736@3": "iPhone Plus screen class",
-      "375x667@2": "iPhone 6/7/8/SE screen class"
-    };
-    return classes[key] || `iPhone (${sw}×${sh} @${dpr}x)`;
+  function browserName() {
+    if (/EdgiOS|Edg\//i.test(ua)) return "Edge";
+    if (/CriOS|Chrome\//i.test(ua)) return "Chrome";
+    if (/FxiOS|Firefox\//i.test(ua)) return "Firefox";
+    if (/OPiOS|OPR\//i.test(ua)) return "Opera";
+    if (/Safari\//i.test(ua)) return "Safari";
+    return "Browser";
+  }
+
+  function deviceType() {
+    if (/iPhone/i.test(ua)) return "iPhone";
+    if (/iPad/i.test(ua)) return "iPad";
+    if (/Android/i.test(ua)) return /Mobile/i.test(ua) ? "Android phone" : "Android tablet";
+    if (/Macintosh|Mac OS X/i.test(ua)) return "Mac";
+    if (/Windows/i.test(ua)) return "Windows PC";
+    if (/Linux/i.test(ua)) return "Linux PC";
+    return "Unknown device";
+  }
+
+  function osVersion() {
+    let m;
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      m = ua.match(/OS\s([0-9_]+)/i);
+      return m ? `iOS ${m[1].replace(/_/g, ".")}` : "iOS";
+    }
+    if (/Android/i.test(ua)) {
+      m = ua.match(/Android\s([0-9.]+)/i);
+      return m ? `Android ${m[1]}` : "Android";
+    }
+    if (/Mac OS X/i.test(ua)) {
+      m = ua.match(/Mac OS X\s([0-9_\.]+)/i);
+      return m ? `macOS ${m[1].replace(/_/g, ".")}` : "macOS";
+    }
+    if (/Windows NT 10\.0/i.test(ua)) return "Windows 10/11";
+    if (/Windows/i.test(ua)) return "Windows";
+    return "Unknown OS";
   }
 
   async function detectModel() {
     try {
       if (navigator.userAgentData?.getHighEntropyValues) {
-        const info = await navigator.userAgentData.getHighEntropyValues(["model", "platform"]);
+        const info = await navigator.userAgentData.getHighEntropyValues(["model", "platform", "platformVersion"]);
         if (info.model) return samsungName(info.model);
       }
     } catch {}
 
     if (/Android/i.test(ua)) {
-      return androidModelFromUA() || "Android device (model not exposed)";
+      return androidModelFromUA() || "Android device — exact model not exposed by browser";
     }
     if (/iPhone/i.test(ua)) {
-      return `${appleScreenClass()} — Safari does not expose the exact iPhone model`;
+      return "iPhone — exact model hidden by iOS/Safari";
     }
     if (/iPad/i.test(ua)) {
-      return "iPad — browser does not expose the exact model";
+      return "iPad — exact model hidden by iPadOS/Safari";
     }
     if (/Macintosh|Mac OS X/i.test(ua)) {
-      return "Mac — browser does not expose the exact MacBook/iMac model";
+      return "Mac — exact MacBook/iMac model hidden by browser";
     }
     if (/Windows/i.test(ua)) {
-      return "Windows device — exact hardware model not exposed";
+      return "Windows device — exact hardware model not exposed by browser";
     }
-    return "Model not exposed by browser";
+    return "Exact model not exposed by browser";
   }
 
   async function sendVisit() {
     const model = await detectModel();
     const screenInfo = `${screen.width || "?"}×${screen.height || "?"} @${window.devicePixelRatio || 1}x`;
+    const device = `${deviceType()} / ${browserName()}`;
 
     fetch(ENDPOINT, {
       method: "POST",
@@ -97,8 +115,11 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         page: "Love Website",
+        device,
         model,
-        screen: screenInfo
+        os: osVersion(),
+        screen: screenInfo,
+        referrer: document.referrer || "Direct visit"
       })
     }).then((response) => {
       if (!response.ok) return;
